@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B1A3D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>FMÖ Angebot</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B1A3D'/%3E%3Cpath d='M22 14c-6 9-9 14-9 19a9 9 0 0 0 18 0c0-5-3-10-9-19z' fill='%231AA3E8'/%3E%3Cpath d='M42 12c-2 8 6 11 6 20a9 9 0 0 1-18 0c0-6 5-8 5-14 3 2 4 5 4 7 2-3 3-8 3-13z' fill='%23E8202A'/%3E%3Ctext x='32' y='58' font-family='Arial' font-weight='700' font-size='14' fill='%23fff' text-anchor='middle'%3EFM%C3%96%3C/text%3E%3C/svg%3E">
+<style>
+:root{--navy:#0B1A3D;--navy2:#16295a;--red:#E8202A;--blue:#1AA3E8;--bg:#eef1f6;--card:#fff;--line:#d9dfea;--muted:#64708a;--ok:#16924f;--warn:#d98b0b;--r:12px}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--navy);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--blue)}
+button{font:inherit;cursor:pointer;color:inherit}
+.appbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;height:56px;padding:0 12px;background:var(--navy);color:#fff;border-bottom:3px solid var(--red)}
+.appbar img{height:38px;max-width:96px;object-fit:contain;background:#fff;border-radius:6px;padding:2px}
+.brand{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.brand b{font-size:16px;white-space:nowrap}
+.brand small{font-size:11px;color:#b9c6e4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grow{flex:1}
+.chip{border:0;border-radius:999px;background:var(--blue);color:#fff;padding:6px 11px;font-size:12px;font-weight:600;white-space:nowrap;max-width:46vw;overflow:hidden;text-overflow:ellipsis}
+.chip:empty{display:none}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:25;display:flex;background:#fff;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0 8px;font-size:11px;font-weight:600;color:var(--muted);text-decoration:none}
+.tabbar a svg{width:24px;height:24px}
+.tabbar a.on{color:var(--navy)}
+.tabbar a.on svg{color:var(--red)}
+main{padding:12px;padding-bottom:96px;max-width:1100px;margin:0 auto}
+@media(min-width:900px){
+ .tabbar{top:56px;bottom:0;right:auto;width:210px;flex-direction:column;border-top:0;border-right:1px solid var(--line);padding-top:12px}
+ .tabbar a{flex:none;flex-direction:row;gap:12px;padding:12px 20px;font-size:15px}
+ main{margin-left:210px;padding:20px 24px 40px}
+ body.wide main{max-width:none}
+}
+h2{font-size:20px;margin:4px 0 12px}
+h3{font-size:16px;margin:0 0 8px}
+.card{background:var(--card);border-radius:var(--r);padding:12px;margin-bottom:12px;box-shadow:0 1px 3px rgba(11,26,61,.09)}
+.muted{color:var(--muted)}.small{font-size:12px}.right{text-align:right}.nowrap{white-space:nowrap}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.row.nw{flex-wrap:nowrap}
+.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:600;background:#e3e8f1;color:var(--navy);display:inline-flex;align-items:center;gap:6px;justify-content:center;text-decoration:none;font-size:14px}
+.btn:active{filter:brightness(.92)}
+.btn.p{background:var(--navy);color:#fff}.btn.r{background:var(--red);color:#fff}.btn.b{background:var(--blue);color:#fff}.btn.g{background:transparent;border:1px solid var(--line)}
+.btn.sm{padding:6px 10px;font-size:13px;border-radius:8px}
+.btn[disabled]{opacity:.5}
+.ib{border:0;background:transparent;border-radius:8px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;font-size:17px;color:var(--navy);flex:none}
+.ib:active{background:#e3e8f1}
+.ib.add{background:var(--red);color:#fff;font-size:22px;font-weight:700;width:40px;height:40px;border-radius:10px}
+.ib.star{color:#c6cdda}.ib.star.on{color:#f2b01e}
+input,select,textarea{font:inherit;font-size:16px;width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:var(--blue)}
+textarea{resize:vertical;min-height:42px}
+input[type=checkbox]{width:auto;transform:scale(1.25);margin:0 6px 0 2px}
+label.f{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:9px 0 3px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:0 8px}
+@media(max-width:560px){.g3.rs,.g2.rs{grid-template-columns:1fr}}
+.span2{grid-column:span 2}
+details.card>summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;align-items:center;gap:8px}
+details.card>summary::before{content:"▸";color:var(--red);transition:transform .15s}
+details.card[open]>summary::before{transform:rotate(90deg)}
+details.card>summary::-webkit-details-marker{display:none}
+.badge{display:inline-block;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700;background:#e3e8f1;color:var(--navy);white-space:nowrap}
+.st-entwurf{background:#e3e8f1;color:#46506a}.st-gesendet{background:#d9effb;color:#0a6aa0}.st-angenommen{background:#d8f2e3;color:#0f7a40}.st-abgelehnt{background:#fbe0e1;color:#b3121a}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+.chips button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.fab{position:fixed;right:16px;bottom:calc(78px + env(safe-area-inset-bottom));z-index:24;border:0;border-radius:16px;background:var(--red);color:#fff;font-weight:700;padding:14px 18px;box-shadow:0 6px 16px rgba(232,32,42,.35);font-size:15px}
+@media(min-width:900px){.fab{bottom:24px;right:28px}}
+.list .item{display:flex;gap:10px;align-items:center;padding:11px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.list .item:last-child{border-bottom:0}
+.list .item:active{background:#f4f6fa}
+.oitem .t1{font-weight:700}.oitem .t2{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.oitem .sum{font-weight:700;text-align:right;white-space:nowrap}
+.empty{text-align:center;padding:28px 12px;color:var(--muted)}
+.empty b{display:block;color:var(--navy);font-size:17px;margin-bottom:6px}
+/* Material */
+.searchbox{position:relative}
+.searchbox input{padding-left:38px;font-size:17px;height:48px;border-radius:12px;border:2px solid var(--navy)}
+.searchbox::before{content:"";position:absolute;left:13px;top:15px;width:13px;height:13px;border:2.5px solid var(--navy);border-radius:50%}
+.searchbox::after{content:"";position:absolute;left:26px;top:29px;width:7px;height:2.5px;background:var(--navy);transform:rotate(45deg)}
+.mrow{display:flex;gap:8px;align-items:center;padding:10px;border-bottom:1px solid var(--line)}
+.mrow:last-child{border-bottom:0}
+.mmain{flex:1;min-width:0;cursor:pointer}
+.mt{font-weight:650;line-height:1.25}
+.ms{font-size:13px;color:#39445e}
+.mm{font-size:12px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mm b{color:var(--navy)}
+.mpr{text-align:right;white-space:nowrap;font-size:13px}
+.mpr .vk{font-weight:700;font-size:15px}
+.mpr .ek{color:var(--muted);font-size:12px}
+.banner{background:var(--navy);color:#fff;border-radius:var(--r);padding:9px 12px;margin-bottom:10px;display:flex;align-items:center;gap:8px;font-size:14px}
+.banner .btn{background:#fff;color:var(--navy)}
+/* Editor */
+.ed-top{position:sticky;top:56px;z-index:15;background:var(--bg);padding:8px 0;margin:-12px 0 6px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+@media(min-width:900px){.ed-top{margin-top:-20px}}
+.titel{background:#fff;border-radius:var(--r);margin-bottom:12px;box-shadow:0 1px 3px rgba(11,26,61,.09);overflow:hidden}
+.titel-h{display:flex;align-items:center;gap:6px;padding:8px 8px 8px 12px;background:var(--navy);color:#fff}
+.titel-h .tn{font-weight:800;min-width:22px}
+.titel-h input{background:transparent;border:1px solid transparent;color:#fff;font-weight:700;padding:6px 8px}
+.titel-h input:focus{background:#fff;color:var(--navy)}
+.titel-h .ib{color:#fff}
+.titel-h .ts{font-weight:700;white-space:nowrap;font-size:14px}
+.tbody{padding:6px 8px;min-height:30px}
+.pos{border:1px solid var(--line);border-radius:10px;padding:8px;margin:6px 0;background:#fff;position:relative}
+.pos.dragging{opacity:.4}
+.pos.drop-before{box-shadow:0 -3px 0 var(--blue)}
+.pos.drop-after{box-shadow:0 3px 0 var(--blue)}
+.pos-h{display:flex;align-items:center;gap:4px;margin-bottom:6px}
+.pos-h .pnr{font-weight:800;min-width:34px}
+.handle{cursor:grab;color:#a4adc0;font-size:18px;padding:0 4px;user-select:none;touch-action:none}
+.typ-mat{border-left:4px solid var(--blue)}.typ-arb{border-left:4px solid var(--red)}.typ-pausch{border-left:4px solid var(--navy)}.typ-text{border-left:4px solid #b9c2d3;background:#fafbfd}
+.pos textarea{min-height:40px;font-size:15px}
+.pnums{display:grid;grid-template-columns:1fr .8fr 1.1fr 1.1fr;gap:6px;margin-top:6px;align-items:end}
+.pnums label{font-size:11px;color:var(--muted);font-weight:600;display:block;margin-bottom:2px}
+.pnums input{padding:7px 8px;text-align:right}
+.pnums input.l{text-align:left}
+.out{padding:7px 8px;text-align:right;font-weight:700;background:#f2f4f8;border-radius:8px;white-space:nowrap}
+.int{background:#fff7e8!important}
+.pint{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:6px;padding:6px;border-radius:8px;background:#fff7e8;align-items:end}
+.pint label{font-size:11px;color:#8a6412;font-weight:600;display:block;margin-bottom:2px}
+.pint input{padding:6px 8px;text-align:right}
+.pint .out{background:transparent;color:#8a6412}
+body.nointern .intern{display:none!important}
+.addrow{display:flex;gap:6px;flex-wrap:wrap;padding:6px 8px 10px}
+.totals{width:100%;border-collapse:collapse}
+.totals td{padding:6px 4px;border-bottom:1px solid var(--line)}
+.totals td:last-child{text-align:right;font-weight:600;white-space:nowrap}
+.totals tr.big td{font-size:17px;font-weight:800;border-bottom:0;color:var(--navy)}
+.totals tr.intern td{color:#8a6412;background:#fff7e8}
+.totals input,.totals select{padding:5px 7px;width:auto}
+@media(min-width:900px){.pos-grid{display:grid;grid-template-columns:1fr 330px;gap:12px;align-items:start}.pos-grid .side{position:sticky;top:120px}}
+/* Dialog */
+.ovl{position:fixed;inset:0;z-index:200;background:rgba(11,26,61,.55);display:flex;align-items:flex-end;justify-content:center}
+.dlg{background:#fff;width:100%;max-width:560px;max-height:92vh;border-radius:16px 16px 0 0;display:flex;flex-direction:column;animation:up .18s ease-out}
+.dlg.wide{max-width:860px}
+@keyframes up{from{transform:translateY(30px);opacity:.4}}
+@media(min-width:700px){.ovl{align-items:center}.dlg{border-radius:16px}}
+.dlg-h{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);font-size:16px}
+.dlg-h b{flex:1}
+.dlg-b{padding:4px 14px 14px;overflow:auto}
+.dlg-f{display:flex;gap:8px;justify-content:flex-end;padding:10px 14px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);flex-wrap:wrap}
+.dlg-f:empty{display:none}
+.bar{height:12px;background:#e3e8f1;border-radius:6px;overflow:hidden;margin:14px 0 8px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--navy));transition:width .15s}
+#toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;z-index:300;background:var(--navy);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;pointer-events:none;transition:.2s;max-width:90vw;text-align:center;border-left:4px solid var(--red)}
+#toast.on{opacity:1;transform:translateX(-50%)}
+table.simple{width:100%;border-collapse:collapse;font-size:13px}
+table.simple td,table.simple th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left}
+.logo-prev{height:70px;max-width:220px;object-fit:contain;border:1px dashed var(--line);border-radius:8px;padding:4px;background:#fff}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.kv span:nth-child(odd){color:var(--muted)}
+/* ============ Druck / Vorschau ============ */
+#print{display:none}
+#print.preview{display:block;position:fixed;inset:0;z-index:150;overflow:auto;background:#4a5268;padding:60px 8px 30px}
+.pv-bar{position:fixed;top:0;left:0;right:0;z-index:151;display:flex;gap:8px;align-items:center;padding:8px 12px;background:var(--navy);color:#fff;border-bottom:3px solid var(--red)}
+.sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact;width:210mm;min-height:297mm;margin:0 auto 16px;background:#fff;color:#111;padding:15mm 20mm 30mm 25mm;position:relative;font:9.5pt/1.35 Arial,Helvetica,sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.pv-head{height:30mm;display:flex;justify-content:space-between;align-items:flex-start;gap:6mm}
+.pv-fname{font-size:15pt;font-weight:700;color:#0B1A3D}
+.pv-fsub{font-size:9pt;color:#1AA3E8;font-weight:700;margin-top:1mm}
+.pv-fline{width:28mm;height:1mm;background:#E8202A;margin-top:2mm}
+.pv-logo{max-height:26mm;max-width:70mm;object-fit:contain}
+.pv-ar{height:45mm;display:flex;justify-content:space-between}
+.pv-addr{width:85mm;height:45mm;position:relative}
+.pv-ret{position:absolute;left:0;right:0;top:0;height:17.7mm;display:flex;align-items:flex-end;font-size:7pt;color:#444}
+.pv-ret span{border-bottom:.2mm solid #444;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:85mm}
+.pv-to{position:absolute;top:17.7mm;left:0;right:0;height:27.3mm;font-size:10pt;line-height:1.3;padding-top:1mm;white-space:pre-line}
+.pv-info{width:65mm;font-size:8.5pt;padding-top:4mm}
+.pv-info table{border-collapse:collapse;width:100%}
+.pv-info td{padding:.4mm 0;vertical-align:top}
+.pv-info td:first-child{color:#555;padding-right:3mm;white-space:nowrap}
+.fold{position:absolute;left:-20mm;width:6mm;height:0;border-top:.25mm solid #888}
+.pv-h1{font-size:14pt;font-weight:700;margin:8mm 0 1mm;color:#0B1A3D}
+.pv-bv{margin:1mm 0 4mm;font-size:9.5pt}
+.pv-txt{white-space:pre-line;margin:3mm 0}
+.pv-tab{width:100%;border-collapse:collapse;margin-top:3mm;font-size:9pt}
+.pv-tab th{background:#0B1A3D;color:#fff;font-weight:700;padding:1.6mm 1.4mm;text-align:left;font-size:8.5pt}
+.pv-tab td{padding:1.4mm 1.4mm;vertical-align:top;border-bottom:.2mm solid #d6dbe5}
+.pv-tab .n{text-align:right;white-space:nowrap}
+.pv-tab tr{break-inside:avoid;page-break-inside:avoid}
+.pv-tab tr.tt{break-after:avoid;page-break-after:avoid}
+.pv-tab tr.tt td{font-weight:700;background:#eef3fb;border-bottom:.3mm solid #1AA3E8;padding-top:2.2mm;color:#0B1A3D}
+.pv-tab tr.ts td{font-weight:700;border-bottom:.4mm solid #0B1A3D}
+.pv-tab tr.tx td{color:#222;font-style:italic}
+.pv-tab .ds{white-space:pre-line}
+.pv-tab .an{color:#666;font-size:7.5pt}
+.pv-sumw{display:flex;justify-content:flex-end;margin-top:5mm;break-inside:avoid;page-break-inside:avoid}
+.pv-sum{width:95mm;border-collapse:collapse;font-size:9.5pt}
+.pv-sum td{padding:1.2mm 1.5mm}
+.pv-sum td:last-child{text-align:right;white-space:nowrap}
+.pv-sum tr.sub td{color:#444;font-size:8.5pt}
+.pv-sum tr.line td{border-top:.3mm solid #0B1A3D}
+.pv-sum tr.tot td{font-weight:700;font-size:11pt;background:#0B1A3D;color:#fff}
+.pv-lohn{font-size:8pt;color:#444;text-align:right;margin-top:1.5mm}
+.pv-end{break-inside:avoid;page-break-inside:avoid;white-space:pre-line}
+.pv-sign{margin-top:6mm}
+.pv-foot{position:absolute;left:25mm;right:20mm;bottom:8mm;display:flex;gap:5mm;justify-content:space-between;font-size:7pt;color:#444;border-top:.2mm solid #999;padding-top:2mm;white-space:pre-line}
+@media print{
+ html,body{background:#fff!important}
+ body>*:not(#print){display:none!important}
+ #print,#print.preview{display:block!important;position:static!important;padding:0!important;background:#fff!important;overflow:visible!important}
+ .pv-bar,.pv-foot{display:none!important}
+ .sheet{width:auto;min-height:0;margin:0;padding:0;box-shadow:none;zoom:1!important}
+ .pv-tab thead{display:table-header-group}
+}
+</style>
+</head>
+<body>
+<header class="appbar">
+ <img id="appLogo" alt="Logo">
+ <div class="brand"><b id="appName">FMÖ Angebot</b><small id="appSub">Sanitär · Heizung · Klima</small></div>
+ <div class="grow"></div>
+ <button id="curChip" class="chip" title="Aktuelles Angebot öffnen"></button>
+</header>
+<nav class="tabbar">
+ <a href="#/angebote" data-tab="angebote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Angebote</a>
+ <a href="#/material" data-tab="material"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>Material</a>
+ <a href="#/kunden" data-tab="kunden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.2 3.2 0 0 1 0 6.4M18 14.8c2 .7 3.2 2.5 3.6 5.2"/></svg>Kunden</a>
+ <a href="#/einstellungen" data-tab="einstellungen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Einstellungen</a>
+</nav>
+<main id="view"></main>
+<div id="print"></div>
+<div id="toast"></div>
+<style id="pageStyle"></style>
+
+<script>
+'use strict';
+/* =====================================================================
+   FMÖ Angebot – Offline-Angebotsprogramm für SHK-Betriebe
+   Eine Datei, keine Server, Daten in IndexedDB.
+   ===================================================================== */
+const APP = 'fmoe-angebot', APPVER = '1.0';
+const $ = (s, e = document) => e.querySelector(s), $$ = (s, e = document) => [...e.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+const r2 = n => { n = +n || 0; return Math.sign(n) * Math.round((Math.abs(n) + 1e-9) * 100) / 100; };
+const nf2 = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const nf3 = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 3 });
+const eur = n => nf2.format(r2(n));
+const num = n => nf3.format(+n || 0);
+const pad = (n, w = 2) => String(n).padStart(w, '0');
+function parseNum(s) {
+  if (typeof s === 'number') return s;
+  s = String(s ?? '').trim().replace(/[\s€%]/g, '');
+  if (!s) return 0;
+  if (s.includes(',')) s = s.replace(/\./g, '').replace(',', '.');
+  const v = parseFloat(s); return isFinite(v) ? v : 0;
+}
+const isoToday = () => { const d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+const fmtDate = iso => { if (!iso) return ''; const [y, m, d] = iso.split('-'); return `${d}.${m}.${y}`; };
+const addDays = (iso, n) => { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + (+n || 0)); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+const norm = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss');
+const sleep0 = () => new Promise(r => setTimeout(r, 0));
+const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+
+/* ---------------- IndexedDB ---------------- */
+const DB = {
+  db: null,
+  open() {
+    return new Promise((res, rej) => {
+      const r = indexedDB.open(APP, 1);
+      r.onupgradeneeded = () => {
+        const d = r.result;
+        for (const s of ['kv', 'materials', 'customers', 'offers', 'rabatt']) if (!d.objectStoreNames.contains(s)) d.createObjectStore(s, { keyPath: s === 'kv' ? 'k' : 'id' });
+      };
+      r.onsuccess = () => { DB.db = r.result; res(); };
+      r.onerror = () => rej(r.error);
+    });
+  },
+  req: r => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }),
+  all(s) { return DB.req(DB.db.transaction(s).objectStore(s).getAll()); },
+  get(s, k) { return DB.req(DB.db.transaction(s).objectStore(s).get(k)); },
+  put(s, o) { return DB.putMany(s, [o]); },
+  del(s, k) { return DB.delMany(s, [k]); },
+  run(s, fn) {
+    return new Promise((res, rej) => {
+      const t = DB.db.transaction(s, 'readwrite'); fn(t.objectStore(s));
+      t.oncomplete = () => res(); t.onerror = () => rej(t.error); t.onabort = () => rej(t.error);
+    });
+  },
+  putMany(s, arr) { return DB.run(s, st => { for (const o of arr) st.put(o); }); },
+  delMany(s, keys) { return DB.run(s, st => { for (const k of keys) st.delete(k); }); },
+  clear(s) { return DB.run(s, st => st.clear()); },
+  kvGet: async k => (await DB.get('kv', k))?.v,
+  kvSet: (k, v) => DB.put('kv', { k, v })
+};
+const stripMat = m => { const { _s, ...o } = m; return o; };
+
+/* ---------------- Zustand ---------------- */
+const DEF = {
+  firma: 'FMÖ Meisterbetrieb', zusatz: 'Sanitär · Heizung · Klima', inhaber: '', strasse: '', plz: '', ort: '',
+  tel: '', mobil: '', email: '', web: '', steuernr: '', ustid: '', bank: '', iban: '', bic: '', hwk: '', logo: '',
+  stundensatz: 65, mwst: 19, gueltig: 30, aufschlag: 20, gruppen: [], lohnanteil: true,
+  nrFormat: 'AN-{JJJJ}-{NR:3}', nrNext: 1, nrYear: new Date().getFullYear(),
+  einleitung: '{BRIEFANREDE}\n\nvielen Dank für Ihre Anfrage. Gerne unterbreiten wir Ihnen für das oben genannte Bauvorhaben folgendes Angebot:',
+  schluss: 'Dieses Angebot ist gültig bis zum {GUELTIG_BIS}.\n\nZahlungsbedingungen: Zahlbar innerhalb von 14 Tagen nach Rechnungsstellung ohne Abzug. Bei Auftragserteilung wird eine Abschlagszahlung in Höhe von 30 % der Auftragssumme fällig.\n\nNicht aufgeführte Leistungen werden nach tatsächlichem Aufwand berechnet. Bauseitige Leistungen (z. B. Fliesen-, Maler- und Elektroarbeiten) sind nicht enthalten, sofern nicht ausdrücklich aufgeführt.\n\nWir würden uns freuen, den Auftrag für Sie ausführen zu dürfen. Für Rückfragen stehen wir Ihnen jederzeit gerne zur Verfügung.\n\nMit freundlichen Grüßen'
+};
+const S = { settings: { ...DEF }, customers: [], offers: [], mats: new Map(), arr: [], rab: new Map(), favs: [], recent: [], cur: null, intern: true, targetTitle: null, facets: { sup: [], grp: [], mfr: [] } };
+const STATUS = { entwurf: 'Entwurf', gesendet: 'Gesendet', angenommen: 'Angenommen', abgelehnt: 'Abgelehnt' };
+const TYP = { mat: 'Material', arb: 'Arbeitszeit', pausch: 'Pauschale', text: 'Text' };
+
+const saveSettings = debounce(() => DB.kvSet('settings', S.settings), 300);
+const saveKV = (k, v) => DB.kvSet(k, v);
+let grpMap = new Map();
+function rebuildGrpMap() { grpMap = new Map(); for (const g of S.settings.gruppen || []) if (g.code) grpMap.set(String(g.code).trim().toLowerCase(), g); }
+
+/* ---------------- Kalkulation Material ---------------- */
+function rabOf(m) { if (m.rab != null) return m.rab; const r = S.rab.get(m.sup + '|' + m.rg); return r ? r.pct : null; }
+function ekOf(m) {
+  if (m.ekFix != null) return m.ekFix;
+  const p = (m.price || 0) / (m.pe || 1);
+  if (m.pkz == 2) return p;
+  const r = rabOf(m); return r != null ? p * (1 - r / 100) : p;
+}
+function listOf(m) { return m.pkz == 2 || m.ekFix != null && !m.price ? null : (m.price || 0) / (m.pe || 1); }
+function aufOf(m) {
+  for (const c of [m.wg, m.hwg, m.rg]) { if (!c) continue; const g = grpMap.get(String(c).trim().toLowerCase()); if (g && g.pct !== '' && g.pct != null) return +g.pct; }
+  return +S.settings.aufschlag || 0;
+}
+function vkOf(m) { return m.vkFix != null ? m.vkFix : r2(ekOf(m) * (1 + aufOf(m) / 100)); }
+function sstr(m) { return norm([m.artnr, m.ean, m.txt1, m.txt2, m.mfr, m.match, m.sup].join(' ')); }
+function grpOf(m) { return m.wg || m.hwg || ''; }
+function grpLabel(c) { const g = grpMap.get(String(c).toLowerCase()); return g && g.name ? `${c} – ${g.name}` : c; }
+function rebuildArr() {
+  S.arr = [...S.mats.values()];
+  const sup = new Map(), grp = new Map(), mfr = new Map();
+  for (const m of S.arr) { sup.set(m.sup, (sup.get(m.sup) || 0) + 1); const g = grpOf(m); if (g) grp.set(g, (grp.get(g) || 0) + 1); if (m.mfr) mfr.set(m.mfr, (mfr.get(m.mfr) || 0) + 1); }
+  const srt = mp => [...mp.entries()].sort((a, b) => String(a[0]).localeCompare(String(b[0]), 'de'));
+  S.facets = { sup: srt(sup), grp: srt(grp), mfr: srt(mfr) };
+}
+
+/* ---------------- UI-Helfer ---------------- */
+const view = $('#view');
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 2300); }
+function modal({ title, html = '', buttons = [{ label: 'OK', value: true, cls: 'p' }], onOpen, wide, closable = true }) {
+  return new Promise(res => {
+    const ov = document.createElement('div'); ov.className = 'ovl';
+    ov.innerHTML = `<div class="dlg ${wide ? 'wide' : ''}" role="dialog"><div class="dlg-h"><b>${esc(title)}</b>${closable ? '<button class="ib" data-x="1" aria-label="Schließen">✕</button>' : ''}</div><div class="dlg-b">${html}</div><div class="dlg-f">${buttons.map((b, i) => `<button class="btn ${b.cls || ''}" data-bi="${i}">${esc(b.label)}</button>`).join('')}</div></div>`;
+    document.body.appendChild(ov);
+    let done = false;
+    const close = v => { if (done) return; done = true; ov.remove(); res(v); };
+    ov._close = close;
+    ov.addEventListener('click', async e => {
+      const bi = e.target.closest('.dlg-f [data-bi]');
+      if (bi) { const b = buttons[+bi.dataset.bi]; if (b.onClick) { const r = await b.onClick(ov); if (r === false) return; close(r === undefined ? b.value : r); } else close(b.value); return; }
+      if (e.target.closest('[data-x]') || (e.target === ov && closable)) close(null);
+    });
+    ov.addEventListener('keydown', e => { if (e.key === 'Escape' && closable) close(null); if (e.key === 'Enter' && e.target.tagName === 'INPUT' && buttons.length) { const i = buttons.findIndex(b => b.cls && b.cls.includes('p')); if (i >= 0) { e.preventDefault(); ov.querySelector(`.dlg-f [data-bi="${i}"]`).click(); } } });
+    onOpen && onOpen(ov);
+    const f = ov.querySelector('[autofocus]'); if (f) setTimeout(() => { f.focus(); f.select && f.select(); }, 60);
+  });
+}
+const confirmDlg = (msg, ok = 'OK', danger = false) => modal({ title: 'Bitte bestätigen', html: `<p>${msg}</p>`, buttons: [{ label: 'Abbrechen', value: false }, { label: ok, value: true, cls: danger ? 'r' : 'p' }] });
+function progress(title) {
+  const ov = document.createElement('div'); ov.className = 'ovl';
+  ov.innerHTML = `<div class="dlg"><div class="dlg-h"><b>${esc(title)}</b></div><div class="dlg-b"><div class="bar"><i></i></div><div class="pt small muted">Starte…</div></div></div>`;
+  document.body.appendChild(ov);
+  return { set(p, t) { $('i', ov).style.width = Math.round(Math.min(1, p) * 100) + '%'; if (t != null) $('.pt', ov).textContent = t; }, close() { ov.remove(); } };
+}
+function download(name, data, type = 'application/json') {
+  const b = new Blob([data], { type }); const a = document.createElement('a');
+  a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+function pickFile(accept = '', multiple = false) {
+  return new Promise(res => { const i = document.createElement('input'); i.type = 'file'; i.accept = accept; i.multiple = multiple; i.onchange = () => res([...i.files]); i.click(); });
+}
+function autoGrow(t) { t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight + 2, 400) + 'px'; }
+const DEFAULT_LOGO = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 90"><rect width="220" height="90" fill="#fff"/><path d="M30 12c-9 14-14 22-14 30a14 14 0 0 0 28 0c0-8-5-16-14-30z" fill="#1AA3E8"/><path d="M62 8c-3 12 9 17 9 31a14 14 0 0 1-28 0c0-9 8-12 8-21 4 3 6 8 6 11 3-5 5-12 5-21z" fill="#E8202A"/><text x="82" y="50" font-family="Arial" font-weight="700" font-size="40" fill="#0B1A3D">FMÖ</text><text x="83" y="70" font-family="Arial" font-size="12.5" font-weight="700" fill="#1AA3E8">MEISTERBETRIEB</text><text x="16" y="84" font-family="Arial" font-size="10" fill="#0B1A3D">Sanitär · Heizung · Klima</text></svg>`);
+const logoSrc = () => S.settings.logo || DEFAULT_LOGO;
+function refreshHeader() {
+  $('#appLogo').src = logoSrc();
+  $('#appName').textContent = (S.settings.firma || 'FMÖ') .replace(/ Meisterbetrieb$/, '') + ' Angebot';
+  $('#appSub').textContent = S.settings.zusatz || '';
+  const o = curOffer();
+  $('#curChip').textContent = o ? `${o.nr} · ${countPos(o)} Pos.` : '';
+}
+const curOffer = () => S.offers.find(o => o.id === S.cur) || null;
+const countPos = o => o.titel.reduce((a, t) => a + t.pos.filter(p => p.typ !== 'text').length, 0);
+function setCur(id) { S.cur = id; saveKV('cur', id); refreshHeader(); }
+
+/* ---------------- Angebot: Nummern, Berechnung ---------------- */
+function formatNr(fmt, n, d = new Date()) {
+  return String(fmt || 'AN-{JJJJ}-{NR:3}').replace(/\{JJJJ\}/g, d.getFullYear()).replace(/\{JJ\}/g, String(d.getFullYear()).slice(2))
+    .replace(/\{MM\}/g, pad(d.getMonth() + 1)).replace(/\{NR(?::(\d+))?\}/g, (_, w) => pad(n, +w || 1));
+}
+function nextNr() {
+  const st = S.settings, y = new Date().getFullYear();
+  if (/\{JJ/.test(st.nrFormat) && st.nrYear !== y) { st.nrNext = 1; st.nrYear = y; }
+  let nr, guard = 0;
+  do { nr = formatNr(st.nrFormat, st.nrNext); st.nrNext++; } while (S.offers.some(o => o.nr === nr) && guard++ < 1000);
+  saveSettings(); return nr;
+}
+function calc(o) {
+  const res = { titles: [], nrs: [], netto0: 0, ek: 0, lohn0: 0 };
+  o.titel.forEach((t, ti) => {
+    let sum = 0, ek = 0, k = 0; const nrs = [];
+    for (const p of t.pos) {
+      if (p.typ === 'text') { nrs.push(''); continue; }
+      k++; nrs.push(`${ti + 1}.${k}`);
+      const gp = r2((+p.menge || 0) * (+p.ep || 0)); sum += gp; ek += (+p.menge || 0) * (+p.ek || 0);
+      if (p.typ === 'arb') res.lohn0 += gp;
+    }
+    res.titles.push({ sum: r2(sum), ek: r2(ek) }); res.nrs.push(nrs);
+    res.netto0 += sum; res.ek += ek;
+  });
+  res.netto0 = r2(res.netto0); res.ek = r2(res.ek);
+  const rw = +o.rabattWert || 0;
+  res.rab = r2(o.rabattTyp === '€' ? rw : res.netto0 * rw / 100);
+  res.netto = r2(res.netto0 - res.rab);
+  res.mwst = r2(res.netto * (+o.mwst || 0) / 100);
+  res.brutto = r2(res.netto + res.mwst);
+  res.gewinn = r2(res.netto - res.ek);
+  res.marge = res.netto ? res.gewinn / res.netto * 100 : 0;
+  const f = res.netto0 ? res.netto / res.netto0 : 1;
+  res.lohn = r2(res.lohn0 * f * (1 + (+o.mwst || 0) / 100));
+  return res;
+}
+const saveOffer = debounce(o => { o.updated = Date.now(); DB.put('offers', o); refreshHeader(); }, 400);
+function saveOfferNow(o) { o.updated = Date.now(); refreshHeader(); return DB.put('offers', o); }
+function newOffer(kunde) {
+  const st = S.settings;
+  const o = {
+    id: uid(), nr: nextNr(), datum: isoToday(), gueltig: +st.gueltig || 30, status: 'entwurf', kundeId: null,
+    adr: { name: '', zusatz: '', strasse: '', plzort: '' }, briefanrede: 'Sehr geehrte Damen und Herren,',
+    bauvorhaben: '', betreff: '', einleitung: st.einleitung, schluss: st.schluss,
+    titel: [{ id: uid(), name: 'Titel 1', pos: [] }], rabattTyp: '%', rabattWert: 0, mwst: +st.mwst, created: Date.now(), updated: Date.now()
+  };
+  if (kunde) applyCustomer(o, kunde);
+  return o;
+}
+function custName(c) { return c.firma || [c.vorname, c.nachname].filter(Boolean).join(' ') || '(ohne Name)'; }
+function briefanrede(c) {
+  if (c.anrede === 'Herr' && c.nachname) return `Sehr geehrter Herr ${[c.titel, c.nachname].filter(Boolean).join(' ')},`;
+  if (c.anrede === 'Frau' && c.nachname) return `Sehr geehrte Frau ${[c.titel, c.nachname].filter(Boolean).join(' ')},`;
+  return 'Sehr geehrte Damen und Herren,';
+}
+function applyCustomer(o, c) {
+  o.kundeId = c.id;
+  const person = [c.anrede && c.anrede !== 'Firma' ? c.anrede : '', c.titel, c.vorname, c.nachname].filter(Boolean).join(' ');
+  o.adr = c.firma ? { name: c.firma, zusatz: person, strasse: c.strasse || '', plzort: [c.plz, c.ort].filter(Boolean).join(' ') }
+    : { name: person, zusatz: '', strasse: c.strasse || '', plzort: [c.plz, c.ort].filter(Boolean).join(' ') };
+  o.briefanrede = briefanrede(c);
+  if (!o.bauvorhaben) o.bauvorhaben = '';
+}
+function fillPlaceholders(txt, o) {
+  return String(txt || '').replace(/\{BRIEFANREDE\}/g, o.briefanrede || 'Sehr geehrte Damen und Herren,')
+    .replace(/\{GUELTIG_BIS\}/g, fmtDate(addDays(o.datum, o.gueltig))).replace(/\{NUMMER\}/g, o.nr)
+    .replace(/\{DATUM\}/g, fmtDate(o.datum)).replace(/\{BAUVORHABEN\}/g, o.bauvorhaben || '');
+}
+
+/* ---------------- Router ---------------- */
+const VIEW_EVENTS = ['onclick', 'oninput', 'onchange', 'ondragstart', 'ondragover', 'ondragleave', 'ondrop', 'ondragend', 'onpointerdown', 'onkeydown', 'onfocusin'];
+function route() {
+  for (const e of VIEW_EVENTS) view[e] = null;
+  document.body.classList.remove('wide');
+  const h = location.hash.replace(/^#\/?/, '') || 'angebote';
+  const [p, id] = h.split('/');
+  const tab = p === 'angebot' ? 'angebote' : p;
+  $$('.tabbar a').forEach(a => a.classList.toggle('on', a.dataset.tab === tab));
+  window.scrollTo(0, 0);
+  if (p === 'angebot' && id) return viewEditor(id);
+  if (p === 'material') return viewMaterial();
+  if (p === 'kunden') return viewCustomers();
+  if (p === 'einstellungen') return viewSettings();
+  return viewOffers();
+}
+const go = h => { if (location.hash === h) route(); else location.hash = h; };
+
+/* =====================================================================
+   ANGEBOTE – Liste
+   ===================================================================== */
+const OL = { q: '', st: '' };
+function viewOffers() {
+  const empty = !S.offers.length;
+  view.innerHTML = `
+  <h2>Angebote</h2>
+  ${empty ? `<div class="card empty"><b>Willkommen bei FMÖ Angebot</b>
+    Noch keine Angebote vorhanden.<br>Tragen Sie zuerst Ihre Firmendaten ein – oder laden Sie Beispieldaten zum Ausprobieren.
+    <div class="row" style="justify-content:center;margin-top:14px"><button class="btn p" data-a="new">+ Neues Angebot</button><a class="btn" href="#/einstellungen">Einstellungen</a><button class="btn b" data-a="demo">Beispieldaten laden</button></div></div>` : `
+  <div class="searchbox" style="margin-bottom:8px"><input id="oq" type="search" placeholder="Suche: Nummer, Kunde, Bauvorhaben…" value="${esc(OL.q)}"></div>
+  <div class="chips" id="ost" style="margin-bottom:10px">${[['', 'Alle'], ...Object.entries(STATUS)].map(([k, l]) => `<button data-st="${k}" class="${OL.st === k ? 'on' : ''}">${l} <span class="muted">${k ? S.offers.filter(o => o.status === k).length : S.offers.length}</span></button>`).join('')}</div>
+  <div class="card list" style="padding:0" id="olist"></div>`}
+  <button class="fab" data-a="new">+ Neues Angebot</button>`;
+  const renderList = () => {
+    const el = $('#olist'); if (!el) return;
+    const q = norm(OL.q).split(/\s+/).filter(Boolean);
+    const list = S.offers.filter(o => (!OL.st || o.status === OL.st) && (!q.length || q.every(t => norm([o.nr, o.adr.name, o.adr.zusatz, o.adr.plzort, o.bauvorhaben, o.betreff].join(' ')).includes(t))))
+      .sort((a, b) => (b.datum || '').localeCompare(a.datum || '') || b.updated - a.updated);
+    el.innerHTML = list.length ? list.map(o => {
+      const c = calc(o);
+      return `<div class="item oitem" data-id="${o.id}"><div style="flex:1;min-width:0">
+        <div class="row nw"><span class="t1">${esc(o.nr)}</span><span class="badge st-${o.status}">${STATUS[o.status]}</span>${o.id === S.cur ? '<span class="badge" style="background:var(--blue);color:#fff">geöffnet</span>' : ''}</div>
+        <div class="t2">${esc(o.adr.name || 'Kein Kunde')}${o.bauvorhaben || o.betreff ? ' · ' + esc((o.betreff || o.bauvorhaben).split('\n')[0]) : ''}</div>
+        <div class="t2">${fmtDate(o.datum)} · ${countPos(o)} Positionen</div></div>
+        <div class="sum">${eur(c.brutto)} €<div class="small muted">brutto</div><div class="small intern" style="color:#8a6412">+${eur(c.gewinn)} €</div></div></div>`;
+    }).join('') : '<div class="empty">Keine Angebote gefunden.</div>';
+  };
+  renderList();
+  view.oninput = e => { if (e.target.id === 'oq') { OL.q = e.target.value; renderList(); } };
+  view.onclick = async e => {
+    const a = e.target.closest('[data-a]')?.dataset.a;
+    if (a === 'new') { const o = newOffer(); S.offers.push(o); await saveOfferNow(o); setCur(o.id); go('#/angebot/' + o.id); return; }
+    if (a === 'demo') { await loadDemo(); return; }
+    const st = e.target.closest('[data-st]'); if (st) { OL.st = st.dataset.st; viewOffers(); return; }
+    const it = e.target.closest('.oitem'); if (it) go('#/angebot/' + it.dataset.id);
+  };
+}
+
+/* =====================================================================
+   ANGEBOT – Editor
+   ===================================================================== */
+let ED = null, DRAG = null;
+function viewEditor(id) {
+  const o = S.offers.find(x => x.id === id);
+  if (!o) { view.innerHTML = '<div class="card empty"><b>Angebot nicht gefunden</b><a href="#/angebote">Zur Liste</a></div>'; return; }
+  ED = { o }; if (S.cur !== o.id) setCur(o.id);
+  document.body.classList.add('wide');
+  renderEditor();
+  bindEditor();
+}
+function posHTML(p, ti, pi, nr) {
+  const isTxt = p.typ === 'text';
+  return `<div class="pos typ-${p.typ}" data-t="${ti}" data-p="${pi}">
+   <div class="pos-h"><span class="handle" title="Ziehen zum Verschieben">⠿</span><span class="pnr">${nr || '–'}</span><span class="badge">${TYP[p.typ]}</span>${p.artnr ? `<span class="small muted nowrap" style="overflow:hidden;text-overflow:ellipsis">Art. ${esc(p.artnr)}</span>` : ''}<span class="grow"></span>
+    <button class="ib" data-pa="up" title="Nach oben">↑</button><button class="ib" data-pa="down" title="Nach unten">↓</button><button class="ib" data-pa="dup" title="Duplizieren">⧉</button><button class="ib" data-pa="del" title="Löschen" style="color:var(--red)">✕</button></div>
+   <textarea data-f="text" rows="1" placeholder="${isTxt ? 'Hinweistext…' : 'Bezeichnung / Leistungsbeschreibung'}">${esc(p.text)}</textarea>
+   ${isTxt ? '' : `<div class="pnums">
+     <div><label>${p.typ === 'arb' ? 'Stunden' : 'Menge'}</label><input data-f="menge" inputmode="decimal" value="${num(p.menge)}"></div>
+     <div><label>Einheit</label><input class="l" data-f="einheit" value="${esc(p.einheit)}"></div>
+     <div><label>${p.typ === 'arb' ? 'Std.-Satz €' : 'EP €'}</label><input data-f="ep" inputmode="decimal" value="${eur(p.ep)}"></div>
+     <div><label>GP €</label><div class="out" data-gp="${ti}.${pi}">${eur((+p.menge || 0) * (+p.ep || 0))}</div></div></div>
+   <div class="pint intern">
+     <div><label>EK €/Einh.</label><input data-f="ek" inputmode="decimal" value="${eur(p.ek)}"></div>
+     <div><label>Aufschlag</label><div class="out" data-auf="${ti}.${pi}"></div></div>
+     <div><label>Gewinn €</label><div class="out" data-gw="${ti}.${pi}"></div></div></div>`}
+  </div>`;
+}
+function renderEditor() {
+  const o = ED.o, c = calc(o);
+  const stOpts = Object.entries(STATUS).map(([k, l]) => `<option value="${k}" ${o.status === k ? 'selected' : ''}>${l}</option>`).join('');
+  view.innerHTML = `
+  <div class="ed-top">
+    <a class="btn sm g" href="#/angebote">← Liste</a>
+    <b style="font-size:17px">${esc(o.nr)}</b><span class="badge st-${o.status}" id="stBadge">${STATUS[o.status]}</span>
+    <span class="grow"></span>
+    <button class="btn sm g" data-a="intern" title="Interne Ansicht (EK / Gewinn)">${S.intern ? '👁 Intern an' : '👁 Intern aus'}</button>
+    <button class="btn sm" data-a="copy">⧉ Kopieren</button>
+    <button class="btn sm" data-a="del" style="color:var(--red)">Löschen</button>
+    <button class="btn sm p" data-a="print">🖨 PDF / Druck</button>
+  </div>
+  <div class="pos-grid"><div>
+  <details class="card" ${o.titel.some(t => t.pos.length) ? '' : 'open'} id="hdr"><summary>Kopfdaten <span class="small muted" style="font-weight:400">${esc(o.adr.name || 'kein Kunde')} · ${fmtDate(o.datum)}</span></summary>
+   <div class="g2 rs">
+    <div><label class="f">Angebotsnummer</label><input data-o="nr" value="${esc(o.nr)}"></div>
+    <div><label class="f">Status</label><select data-o="status">${stOpts}</select></div>
+    <div><label class="f">Datum</label><input type="date" data-o="datum" value="${esc(o.datum)}"></div>
+    <div><label class="f">Gültig (Tage) – bis <span id="gBis">${fmtDate(addDays(o.datum, o.gueltig))}</span></label><input data-o="gueltig" inputmode="numeric" value="${esc(o.gueltig)}"></div>
+   </div>
+   <label class="f">Kunde</label>
+   <div class="row nw"><button class="btn b sm" data-a="pickc">Kunde wählen</button><button class="btn sm g" data-a="newc">+ Neuer Kunde</button></div>
+   <div class="g2 rs">
+    <div><label class="f">Name / Firma</label><input data-adr="name" value="${esc(o.adr.name)}"></div>
+    <div><label class="f">Zusatz / z. Hd.</label><input data-adr="zusatz" value="${esc(o.adr.zusatz)}"></div>
+    <div><label class="f">Straße, Nr.</label><input data-adr="strasse" value="${esc(o.adr.strasse)}"></div>
+    <div><label class="f">PLZ Ort</label><input data-adr="plzort" value="${esc(o.adr.plzort)}"></div>
+   </div>
+   <label class="f">Briefanrede</label><input data-o="briefanrede" value="${esc(o.briefanrede)}">
+   <label class="f">Bauvorhaben / Ausführungsort</label><textarea data-o="bauvorhaben" rows="2" placeholder="z. B. Badsanierung OG, Musterweg 5, 44137 Dortmund">${esc(o.bauvorhaben)}</textarea>
+   <label class="f">Betreff (optional)</label><input data-o="betreff" value="${esc(o.betreff)}">
+   <label class="f">Einleitungstext</label><textarea data-o="einleitung" rows="3">${esc(o.einleitung)}</textarea>
+   <label class="f">Schlusstext / Zahlungsbedingungen</label><textarea data-o="schluss" rows="4">${esc(o.schluss)}</textarea>
+   <div class="small muted">Platzhalter: {BRIEFANREDE} {GUELTIG_BIS} {NUMMER} {DATUM} {BAUVORHABEN}</div>
+  </details>
+  ${o.titel.map((t, ti) => `
+   <div class="titel" data-t="${ti}">
+    <div class="titel-h"><span class="tn">${ti + 1}</span><input data-tf="name" data-t="${ti}" value="${esc(t.name)}" placeholder="Titel, z. B. Bad"><span class="ts" data-ts="${ti}">${eur(c.titles[ti].sum)} €</span>
+     <button class="ib" data-ta="up" data-t="${ti}" title="Titel nach oben">↑</button><button class="ib" data-ta="down" data-t="${ti}" title="Titel nach unten">↓</button><button class="ib" data-ta="del" data-t="${ti}" title="Titel löschen">✕</button></div>
+    <div class="tbody" data-t="${ti}">${t.pos.map((p, pi) => posHTML(p, ti, pi, c.nrs[ti][pi])).join('') || '<div class="small muted" style="padding:8px">Noch keine Positionen – unten hinzufügen.</div>'}</div>
+    <div class="addrow">
+     <button class="btn sm b" data-add="search" data-t="${ti}">🔍 Material</button>
+     <button class="btn sm" data-add="mat" data-t="${ti}">+ Material frei</button>
+     <button class="btn sm" data-add="arb" data-t="${ti}">+ Arbeitszeit</button>
+     <button class="btn sm" data-add="pausch" data-t="${ti}">+ Pauschale</button>
+     <button class="btn sm" data-add="text" data-t="${ti}">+ Text</button>
+    </div>
+   </div>`).join('')}
+   <button class="btn p" data-a="addt" style="width:100%;margin-bottom:12px">+ Neuer Titel</button>
+  </div>
+  <div class="side"><div class="card"><h3>Summen</h3><table class="totals" id="tot"></table></div></div>
+  </div>`;
+  renderTotals();
+  $$('textarea', view).forEach(autoGrow);
+}
+function renderTotals() {
+  const o = ED.o, c = calc(o), el = $('#tot'); if (!el) return;
+  el.innerHTML = `
+   ${o.titel.map((t, ti) => `<tr><td class="small">${ti + 1} ${esc(t.name)}</td><td class="small">${eur(c.titles[ti].sum)} €</td></tr>`).join('')}
+   <tr><td><b>Zwischensumme netto</b></td><td>${eur(c.netto0)} €</td></tr>
+   <tr><td>Rabatt <input data-o="rabattWert" inputmode="decimal" style="width:70px" value="${num(o.rabattWert)}"> <select data-o="rabattTyp"><option ${o.rabattTyp === '%' ? 'selected' : ''}>%</option><option ${o.rabattTyp === '€' ? 'selected' : ''}>€</option></select></td><td>− ${eur(c.rab)} €</td></tr>
+   <tr><td><b>Netto</b></td><td>${eur(c.netto)} €</td></tr>
+   <tr><td>MwSt <input data-o="mwst" inputmode="decimal" style="width:52px" value="${num(o.mwst)}"> %</td><td>${eur(c.mwst)} €</td></tr>
+   <tr class="big"><td>Brutto</td><td>${eur(c.brutto)} €</td></tr>
+   ${S.settings.lohnanteil ? `<tr><td class="small muted">davon Lohnanteil (§35a EStG)</td><td class="small muted">${eur(c.lohn)} €</td></tr>` : ''}
+   <tr class="intern"><td>EK gesamt</td><td>${eur(c.ek)} €</td></tr>
+   <tr class="intern"><td>Gewinn (netto)</td><td>${eur(c.gewinn)} €</td></tr>
+   <tr class="intern"><td>Marge</td><td>${nf2.format(c.marge)} %</td></tr>`;
+  updatePosOutputs(c);
+}
+function updatePosOutputs(c) {
+  const o = ED.o;
+  o.titel.forEach((t, ti) => {
+    const ts = $(`[data-ts="${ti}"]`); if (ts) ts.textContent = eur(c.titles[ti].sum) + ' €';
+    t.pos.forEach((p, pi) => {
+      if (p.typ === 'text') return;
+      const k = `${ti}.${pi}`, gp = r2((+p.menge || 0) * (+p.ep || 0));
+      const g = $(`[data-gp="${k}"]`); if (g) g.textContent = eur(gp);
+      const w = $(`[data-gw="${k}"]`); if (w) w.textContent = eur(gp - (+p.menge || 0) * (+p.ek || 0));
+      const a = $(`[data-auf="${k}"]`); if (a) a.textContent = +p.ek ? nf2.format((p.ep / p.ek - 1) * 100) + ' %' : '–';
+    });
+  });
+}
+function mkPos(typ) {
+  const st = S.settings;
+  if (typ === 'arb') return { id: uid(), typ, text: 'Arbeitszeit Monteur (Meister/Geselle)', menge: 1, einheit: 'Std', ep: +st.stundensatz || 0, ek: 0 };
+  if (typ === 'pausch') return { id: uid(), typ, text: '', menge: 1, einheit: 'psch', ep: 0, ek: 0 };
+  if (typ === 'text') return { id: uid(), typ, text: '' };
+  return { id: uid(), typ: 'mat', text: '', menge: 1, einheit: 'Stk', ep: 0, ek: 0 };
+}
+function posFromMat(m, menge, ep) {
+  return { id: uid(), typ: 'mat', matId: m.id, artnr: m.artnr, text: [m.txt1, m.txt2].filter(Boolean).join('\n'), menge, einheit: m.unit || 'Stk', ep: r2(ep ?? vkOf(m)), ek: r2(ekOf(m) * 10000) / 10000, mfr: m.mfr || '' };
+}
+function bindEditor() {
+  const o = ED.o;
+  const changed = (full) => { saveOffer(o); if (full) { renderEditor(); } else renderTotals(); };
+  view.oninput = e => {
+    const el = e.target, d = el.dataset;
+    if (el.tagName === 'TEXTAREA') autoGrow(el);
+    if (d.o) {
+      const numF = ['gueltig', 'rabattWert', 'mwst'];
+      o[d.o] = numF.includes(d.o) ? parseNum(el.value) : el.value;
+      if (d.o === 'gueltig' || d.o === 'datum') { const g = $('#gBis'); if (g) g.textContent = fmtDate(addDays(o.datum, o.gueltig)); }
+      if (d.o === 'status') { const b = $('#stBadge'); b.className = 'badge st-' + o.status; b.textContent = STATUS[o.status]; }
+      if (d.o === 'nr') refreshHeader();
+      if (['rabattWert', 'mwst'].includes(d.o)) { saveOffer(o); const c = calc(o); updateTotalsCells(c); return; }
+      saveOffer(o); return;
+    }
+    if (d.adr) { o.adr[d.adr] = el.value; saveOffer(o); return; }
+    if (d.tf) { o.titel[+d.t].name = el.value; saveOffer(o); updateTotalsCells(calc(o)); return; }
+    if (d.f) {
+      const pe = el.closest('.pos'), p = o.titel[+pe.dataset.t].pos[+pe.dataset.p];
+      p[d.f] = ['menge', 'ep', 'ek'].includes(d.f) ? parseNum(el.value) : el.value;
+      saveOffer(o); updateTotalsCells(calc(o));
+    }
+  };
+  view.onchange = e => {
+    const d = e.target.dataset;
+    if (d.o === 'rabattTyp' || d.o === 'status' || d.o === 'datum') { o[d.o] = e.target.value; saveOffer(o); if (d.o === 'rabattTyp') renderTotals(); }
+    if (d.f === 'ep' || d.f === 'ek' || d.f === 'menge') { const p = posOf(e.target); if (d.f === 'menge') e.target.value = num(p[d.f]); else e.target.value = eur(p[d.f]); }
+  };
+  view.onclick = async e => {
+    const t = e.target;
+    const a = t.closest('[data-a]')?.dataset.a;
+    if (a === 'intern') { S.intern = !S.intern; saveKV('intern', S.intern); document.body.classList.toggle('nointern', !S.intern); t.closest('button').textContent = S.intern ? '👁 Intern an' : '👁 Intern aus'; return; }
+    if (a === 'print') { await saveOfferNow(o); openPreview(o); return; }
+    if (a === 'copy') { const n = copyOffer(o); S.offers.push(n); await saveOfferNow(n); setCur(n.id); toast(`Kopie ${n.nr} angelegt`); go('#/angebot/' + n.id); return; }
+    if (a === 'del') { if (await confirmDlg(`Angebot <b>${esc(o.nr)}</b> wirklich löschen?`, 'Löschen', true)) { S.offers = S.offers.filter(x => x !== o); await DB.del('offers', o.id); if (S.cur === o.id) setCur(null); toast('Angebot gelöscht'); go('#/angebote'); } return; }
+    if (a === 'addt') { o.titel.push({ id: uid(), name: 'Titel ' + (o.titel.length + 1), pos: [] }); changed(true); const ins = $$('[data-tf]'); ins[ins.length - 1]?.focus(); ins[ins.length - 1]?.select(); return; }
+    if (a === 'pickc' || a === 'newc') {
+      const c = a === 'pickc' ? await pickCustomer() : await editCustomer();
+      if (c) { applyCustomer(o, c); await saveOfferNow(o); renderEditor(); $('#hdr').open = true; toast('Kunde übernommen'); }
+      return;
+    }
+    const add = t.closest('[data-add]');
+    if (add) {
+      const ti = +add.dataset.t, typ = add.dataset.add;
+      if (typ === 'search') { S.targetTitle = o.titel[ti].id; go('#/material'); return; }
+      o.titel[ti].pos.push(mkPos(typ)); changed(true);
+      const ps = $$(`.pos[data-t="${ti}"] textarea`); ps[ps.length - 1]?.focus();
+      return;
+    }
+    const ta = t.closest('[data-ta]');
+    if (ta) {
+      const ti = +ta.dataset.t, act = ta.dataset.ta, T = o.titel;
+      if (act === 'up' && ti > 0) [T[ti - 1], T[ti]] = [T[ti], T[ti - 1]];
+      else if (act === 'down' && ti < T.length - 1) [T[ti + 1], T[ti]] = [T[ti], T[ti + 1]];
+      else if (act === 'del') { if (T[ti].pos.length && !await confirmDlg(`Titel „${esc(T[ti].name)}“ mit ${T[ti].pos.length} Positionen löschen?`, 'Löschen', true)) return; T.splice(ti, 1); if (!T.length) T.push({ id: uid(), name: 'Titel 1', pos: [] }); }
+      else return;
+      changed(true); return;
+    }
+    const pa = t.closest('[data-pa]');
+    if (pa) {
+      const pe = pa.closest('.pos'), ti = +pe.dataset.t, pi = +pe.dataset.p, P = o.titel[ti].pos, act = pa.dataset.pa;
+      if (act === 'up') { if (pi > 0) [P[pi - 1], P[pi]] = [P[pi], P[pi - 1]]; else if (ti > 0) o.titel[ti - 1].pos.push(P.shift()); else return; }
+      else if (act === 'down') { if (pi < P.length - 1) [P[pi + 1], P[pi]] = [P[pi], P[pi + 1]]; else if (ti < o.titel.length - 1) o.titel[ti + 1].pos.unshift(P.pop()); else return; }
+      else if (act === 'dup') P.splice(pi + 1, 0, { ...P[pi], id: uid() });
+      else if (act === 'del') P.splice(pi, 1);
+      changed(true); return;
+    }
+  };
+  // Drag & Drop (Griff ⠿)
+  view.onpointerdown = e => { const h = e.target.closest('.handle'); if (h) h.closest('.pos').draggable = true; };
+  view.ondragstart = e => { const p = e.target.closest?.('.pos'); if (!p) return; DRAG = { t: +p.dataset.t, p: +p.dataset.p }; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', 'pos'); p.classList.add('dragging'); };
+  const clearMarks = () => $$('.drop-before,.drop-after').forEach(x => x.classList.remove('drop-before', 'drop-after'));
+  view.ondragover = e => {
+    if (!DRAG) return; const tg = e.target.closest('.pos') || e.target.closest('.tbody'); if (!tg) return;
+    e.preventDefault(); clearMarks();
+    if (tg.classList.contains('pos')) { const r = tg.getBoundingClientRect(); tg.classList.add(e.clientY < r.top + r.height / 2 ? 'drop-before' : 'drop-after'); }
+  };
+  view.ondrop = e => {
+    if (!DRAG) return; e.preventDefault();
+    const tg = e.target.closest('.pos') || e.target.closest('.tbody'); if (!tg) return;
+    let ti = +tg.dataset.t, pi;
+    if (tg.classList.contains('pos')) { const r = tg.getBoundingClientRect(); pi = +tg.dataset.p + (e.clientY < r.top + r.height / 2 ? 0 : 1); }
+    else pi = o.titel[ti].pos.length;
+    const [item] = o.titel[DRAG.t].pos.splice(DRAG.p, 1);
+    if (DRAG.t === ti && DRAG.p < pi) pi--;
+    o.titel[ti].pos.splice(pi, 0, item); DRAG = null; changed(true);
+  };
+  view.ondragend = () => { DRAG = null; clearMarks(); $$('.pos[draggable=true]').forEach(p => { p.draggable = false; p.classList.remove('dragging'); }); };
+}
+function posOf(el) { const pe = el.closest('.pos'); return ED.o.titel[+pe.dataset.t].pos[+pe.dataset.p]; }
+function updateTotalsCells(c) {
+  // Summen neu zeichnen, ohne den Fokus in Summenfeldern zu verlieren
+  const act = document.activeElement, tot = $('#tot');
+  if (tot && tot.contains(act)) {
+    const rows = $$('tr', tot); const o = ED.o; const n = o.titel.length;
+    rows.forEach((r, i) => { const td = r.lastElementChild; if (i < n) td.textContent = eur(c.titles[i].sum) + ' €'; });
+    const vals = [eur(c.netto0) + ' €', '− ' + eur(c.rab) + ' €', eur(c.netto) + ' €', eur(c.mwst) + ' €', eur(c.brutto) + ' €'];
+    for (let i = 0; i < 5; i++) rows[n + i].lastElementChild.textContent = vals[i];
+    let k = n + 5; if (S.settings.lohnanteil) rows[k++].lastElementChild.textContent = eur(c.lohn) + ' €';
+    rows[k++].lastElementChild.textContent = eur(c.ek) + ' €'; rows[k++].lastElementChild.textContent = eur(c.gewinn) + ' €'; rows[k].lastElementChild.textContent = nf2.format(c.marge) + ' %';
+    updatePosOutputs(c);
+  } else renderTotals();
+}
+function copyOffer(o) {
+  const n = JSON.parse(JSON.stringify(o));
+  n.id = uid(); n.nr = nextNr(); n.datum = isoToday(); n.status = 'entwurf'; n.created = n.updated = Date.now();
+  n.titel.forEach(t => { t.id = uid(); t.pos.forEach(p => p.id = uid()); });
+  return n;
+}
+
+/* =====================================================================
+   MATERIALSUCHE
+   ===================================================================== */
+const MS = { q: '', tab: 'all', sup: '', grp: '', mfr: '', shown: 50, showFilter: false };
+function viewMaterial() {
+  const o = curOffer();
+  const tTitle = o && (o.titel.find(t => t.id === S.targetTitle) || o.titel[o.titel.length - 1]);
+  const opt = (arr, sel, lab) => arr.map(([v, n]) => `<option value="${esc(v)}" ${v === sel ? 'selected' : ''}>${esc(lab ? lab(v) : v)} (${n})</option>`).join('');
+  view.innerHTML = `
+  ${o ? `<div class="banner"><span style="flex:1;min-width:0">➕ Hinzufügen zu <b>${esc(o.nr)}</b>${tTitle ? ' · ' + esc(tTitle.name) : ''}</span><a class="btn sm" href="#/angebot/${o.id}">Zum Angebot</a></div>` : ''}
+  <div class="row nw" style="margin-bottom:8px"><h2 style="margin:0;flex:1">Materialsuche</h2><span class="small muted">${S.arr.length.toLocaleString('de-DE')} Artikel</span></div>
+  <div class="searchbox"><input id="mq" type="search" autocomplete="off" placeholder="Artikelnr., EAN, Text, Hersteller… z. B. geberit spülkasten" value="${esc(MS.q)}"></div>
+  <div class="row" style="margin:8px 0">
+    <div class="chips" style="flex:1">${[['all', 'Alle'], ['fav', '★ Favoriten'], ['recent', '🕘 Zuletzt']].map(([k, l]) => `<button data-tab="${k}" class="${MS.tab === k ? 'on' : ''}">${l}</button>`).join('')}
+    <button data-a="filter" class="${MS.sup || MS.grp || MS.mfr ? 'on' : ''}">⚙ Filter${MS.sup || MS.grp || MS.mfr ? ' •' : ''}</button></div>
+  </div>
+  <div class="card" id="mfilter" style="${MS.showFilter ? '' : 'display:none'}">
+   <div class="g3 rs">
+    <div><label class="f">Lieferant / Großhändler</label><select data-flt="sup"><option value="">Alle</option>${opt(S.facets.sup, MS.sup)}</select></div>
+    <div><label class="f">Warengruppe</label><select data-flt="grp"><option value="">Alle</option>${opt(S.facets.grp, MS.grp, grpLabel)}</select></div>
+    <div><label class="f">Hersteller</label><select data-flt="mfr"><option value="">Alle</option>${opt(S.facets.mfr, MS.mfr)}</select></div>
+   </div>
+   <button class="btn sm g" data-a="reset" style="margin-top:8px">Filter zurücksetzen</button>
+  </div>
+  <div class="small muted" id="mcount" style="margin:4px 2px 6px"></div>
+  <div class="card" style="padding:0" id="mres"></div>
+  <div class="row" style="margin-top:6px">
+    <button class="btn sm" data-a="manual">+ Artikel manuell</button>
+    <button class="btn sm b" data-a="dn">⇪ DATANORM import</button>
+    <button class="btn sm b" data-a="csv">⇪ CSV import</button>
+    <button class="btn sm g" data-a="manage">Lieferanten verwalten</button>
+  </div>`;
+  const inp = $('#mq');
+  if (matchMedia('(min-width:900px)').matches) inp.focus();
+  doSearch();
+  const ds = debounce(doSearch, 120);
+  view.oninput = e => { if (e.target.id === 'mq') { MS.q = e.target.value; MS.shown = 50; ds(); } };
+  view.onchange = e => { const f = e.target.dataset.flt; if (f) { MS[f] = e.target.value; MS.shown = 50; doSearch(); } };
+  view.onclick = async e => {
+    const t = e.target;
+    const tab = t.closest('[data-tab]'); if (tab && tab.closest('.chips')) { MS.tab = tab.dataset.tab; MS.shown = 50; $$('.chips [data-tab]').forEach(b => b.classList.toggle('on', b === tab)); doSearch(); return; }
+    const a = t.closest('[data-a]')?.dataset.a;
+    if (a === 'filter') { MS.showFilter = !MS.showFilter; $('#mfilter').style.display = MS.showFilter ? '' : 'none'; return; }
+    if (a === 'reset') { MS.sup = MS.grp = MS.mfr = ''; viewMaterial(); return; }
+    if (a === 'more') { MS.shown += 50; doSearch(); return; }
+    if (a === 'manual') { const m = await editMaterial(null); if (m) { MS.q = m.artnr; viewMaterial(); } return; }
+    if (a === 'dn') { await importDatanormDlg(); viewMaterial(); return; }
+    if (a === 'csv') { await importCsvDlg(); viewMaterial(); return; }
+    if (a === 'manage') { await manageSuppliers(); viewMaterial(); return; }
+    if (a === 'demo') { await loadDemo(); return; }
+    const row = t.closest('.mrow'); if (!row) return;
+    const m = S.mats.get(row.dataset.id); if (!m) return;
+    if (t.closest('.star')) { toggleFav(m.id); t.closest('.star').classList.toggle('on', S.favs.includes(m.id)); if (MS.tab === 'fav') doSearch(); return; }
+    if (t.closest('.add')) { await addToOffer(m); return; }
+    if (t.closest('.mmain')) { await matDetail(m); doSearch(); }
+  };
+}
+function searchMats() {
+  const toks = norm(MS.q).split(/\s+/).filter(Boolean);
+  let src = MS.tab === 'fav' ? S.favs.map(id => S.mats.get(id)).filter(Boolean) : MS.tab === 'recent' ? S.recent.map(id => S.mats.get(id)).filter(Boolean) : S.arr;
+  const out = []; let total = 0; const MAXK = 2000;
+  for (const m of src) {
+    if (MS.sup && m.sup !== MS.sup) continue;
+    if (MS.grp && grpOf(m) !== MS.grp) continue;
+    if (MS.mfr && m.mfr !== MS.mfr) continue;
+    if (toks.length) { const s = m._s || (m._s = sstr(m)); let ok = true; for (const tk of toks) if (!s.includes(tk)) { ok = false; break; } if (!ok) continue; }
+    total++; if (out.length < MAXK) out.push(m);
+  }
+  if (toks.length && MS.tab === 'all') {
+    const q = norm(MS.q.trim()), t0 = toks[0];
+    const sc = m => { const a = norm(m.artnr), e = m.ean || ''; if (a === q || e === q) return 0; if (a.startsWith(q)) return 1; if (norm(m.txt1).startsWith(t0)) return 2; if (norm(m.mfr).startsWith(t0)) return 3; return 4; };
+    out.forEach(m => m._sc = sc(m)); out.sort((a, b) => a._sc - b._sc || String(a.txt1).localeCompare(String(b.txt1), 'de'));
+  }
+  return { out, total };
+}
+function matRowHTML(m) {
+  const ek = ekOf(m), vk = vkOf(m);
+  return `<div class="mrow" data-id="${esc(m.id)}">
+   <div class="mmain"><div class="mt">${esc(m.txt1)}</div>${m.txt2 ? `<div class="ms">${esc(m.txt2)}</div>` : ''}
+   <div class="mm"><b>${esc(m.artnr)}</b>${m.mfr ? ' · ' + esc(m.mfr) : ''} · ${esc(m.sup)}${grpOf(m) ? ' · WG ' + esc(grpOf(m)) : ''}${m.ean ? ' · EAN ' + esc(m.ean) : ''}</div></div>
+   <div class="mpr"><div class="vk">${eur(vk)} €</div><div class="ek intern">EK ${eur(ek)} €</div><div class="small muted">/ ${esc(m.unit || 'Stk')}</div></div>
+   <button class="ib star ${S.favs.includes(m.id) ? 'on' : ''}" title="Favorit">★</button>
+   <button class="ib add" title="Zum Angebot hinzufügen">+</button></div>`;
+}
+function doSearch() {
+  const el = $('#mres'); if (!el) return;
+  if (!S.arr.length) {
+    el.innerHTML = `<div class="empty"><b>Noch keine Artikel</b>Importieren Sie eine DATANORM- oder CSV-Datei Ihres Großhändlers oder legen Sie Artikel manuell an.<div class="row" style="justify-content:center;margin-top:12px"><button class="btn b" data-a="dn">DATANORM import</button><button class="btn" data-a="demo">Beispieldaten laden</button></div></div>`;
+    $('#mcount').textContent = ''; return;
+  }
+  const t0 = performance.now(); const { out, total } = searchMats(); const ms = Math.round(performance.now() - t0);
+  $('#mcount').textContent = `${total.toLocaleString('de-DE')} Treffer${MS.q ? ` für „${MS.q}“` : ''} · ${ms} ms`;
+  const list = out.slice(0, MS.shown);
+  el.innerHTML = list.length ? list.map(matRowHTML).join('') + (out.length > MS.shown ? `<div style="padding:10px;text-align:center"><button class="btn sm" data-a="more">Weitere anzeigen (${Math.min(out.length, total) - MS.shown})</button></div>` : '')
+    : `<div class="empty">${MS.tab === 'fav' ? 'Noch keine Favoriten – tippen Sie auf ★ bei einem Artikel.' : MS.tab === 'recent' ? 'Noch keine zuletzt verwendeten Artikel.' : 'Keine Treffer.'}</div>`;
+}
+function toggleFav(id) { const i = S.favs.indexOf(id); if (i >= 0) S.favs.splice(i, 1); else S.favs.unshift(id); saveKV('favs', S.favs); }
+function pushRecent(id) { S.recent = [id, ...S.recent.filter(x => x !== id)].slice(0, 60); saveKV('recent', S.recent); }
+async function chooseOfferForAdd() {
+  const drafts = S.offers.filter(o => o.status === 'entwurf').sort((a, b) => b.updated - a.updated);
+  const r = await modal({
+    title: 'Kein Angebot geöffnet', html: `<p>Zu welchem Angebot soll der Artikel hinzugefügt werden?</p>
+     <div class="list card" style="padding:0">${drafts.map(o => `<div class="item" data-oid="${o.id}"><b>${esc(o.nr)}</b><span class="muted">${esc(o.adr.name || '')}</span></div>`).join('') || '<div class="empty small">Keine Entwürfe vorhanden.</div>'}</div>`,
+    buttons: [{ label: 'Abbrechen', value: null }, { label: '+ Neues Angebot', value: 'new', cls: 'p' }],
+    onOpen: ov => ov.addEventListener('click', e => { const it = e.target.closest('[data-oid]'); if (it) ov._close(it.dataset.oid); })
+  });
+  if (!r) return null;
+  if (r === 'new') { const o = newOffer(); S.offers.push(o); await saveOfferNow(o); setCur(o.id); return o; }
+  setCur(r); return curOffer();
+}
+async function addToOffer(m) {
+  let o = curOffer(); if (!o) { o = await chooseOfferForAdd(); if (!o) return; viewMaterial(); }
+  let tId = (o.titel.find(t => t.id === S.targetTitle) || o.titel[o.titel.length - 1]).id;
+  const vk = vkOf(m);
+  const res = await modal({
+    title: 'Zum Angebot hinzufügen', html: `
+    <div style="margin:8px 0"><b>${esc(m.txt1)}</b><div class="small muted">${esc(m.txt2 || '')}</div><div class="small muted">Art. ${esc(m.artnr)} · ${esc(m.sup)}</div></div>
+    <div class="g2"><div><label class="f">Menge (${esc(m.unit || 'Stk')})</label><input id="aq" inputmode="decimal" value="1" autofocus style="font-size:20px;font-weight:700"></div>
+    <div><label class="f">VK-Einzelpreis €</label><input id="ap" inputmode="decimal" value="${eur(vk)}"></div></div>
+    <div class="small muted intern" style="margin-top:4px">EK ${eur(ekOf(m))} € · Aufschlag ${nf2.format(aufOf(m))} %</div>
+    <label class="f">Titel in ${esc(o.nr)}</label><select id="at">${o.titel.map(t => `<option value="${t.id}" ${t.id === tId ? 'selected' : ''}>${esc(t.name)}</option>`).join('')}<option value="__new">+ Neuer Titel…</option></select>
+    <div class="row" style="margin-top:10px">${[1, 2, 5, 10, 25, 50].map(n => `<button class="btn sm g" data-q="${n}">${n}</button>`).join('')}</div>`,
+    buttons: [{ label: 'Abbrechen', value: null }, { label: 'Hinzufügen', cls: 'p', onClick: ov => ({ q: parseNum($('#aq', ov).value), p: parseNum($('#ap', ov).value), t: $('#at', ov).value }) }],
+    onOpen: ov => ov.addEventListener('click', e => { const b = e.target.closest('[data-q]'); if (b) { $('#aq', ov).value = b.dataset.q; } })
+  });
+  if (!res || !res.q) return;
+  let T = o.titel.find(t => t.id === res.t);
+  if (res.t === '__new') { T = { id: uid(), name: 'Titel ' + (o.titel.length + 1), pos: [] }; o.titel.push(T); }
+  if (!T) T = o.titel[o.titel.length - 1];
+  T.pos.push(posFromMat(m, res.q, res.p));
+  S.targetTitle = T.id;
+  pushRecent(m.id); await saveOfferNow(o);
+  toast(`${num(res.q)} × ${m.txt1.slice(0, 30)} → ${o.nr}`);
+  if (location.hash.startsWith('#/material')) { const b = $('.banner'); if (!b) viewMaterial(); }
+}
+async function matDetail(m) {
+  const list = listOf(m), r = rabOf(m);
+  const res = await modal({
+    title: 'Artikel', html: `<h3 style="margin-top:10px">${esc(m.txt1)}</h3><div class="muted" style="margin-bottom:10px">${esc(m.txt2 || '')}</div>
+    <div class="kv"><span>Artikelnr.</span><b>${esc(m.artnr)}</b><span>Lieferant</span><span>${esc(m.sup)}</span><span>Hersteller</span><span>${esc(m.mfr || '–')}</span>
+    <span>EAN</span><span>${esc(m.ean || '–')}</span><span>Warengruppe</span><span>${esc(grpOf(m) ? grpLabel(grpOf(m)) : '–')}</span><span>Rabattgruppe</span><span>${esc(m.rg || '–')}</span>
+    <span>Einheit</span><span>${esc(m.unit || 'Stk')}${m.pe > 1 ? ` (Preis je ${m.pe})` : ''}</span>
+    ${list != null ? `<span class="intern">Listenpreis</span><span class="intern">${eur(list)} €</span>` : ''}
+    ${r != null ? `<span class="intern">Rabatt</span><span class="intern">${nf2.format(r)} %</span>` : ''}
+    <span class="intern">EK netto</span><b class="intern">${eur(ekOf(m))} €</b><span class="intern">Aufschlag</span><span class="intern">${nf2.format(aufOf(m))} %${m.vkFix != null ? ' (fester VK)' : ''}</span>
+    <span>VK netto</span><b style="color:var(--red)">${eur(vkOf(m))} €</b>
+    <span>Aktualisiert</span><span>${m.upd ? new Date(m.upd).toLocaleString('de-DE') : '–'}</span></div>`,
+    buttons: [{ label: 'Löschen', value: 'del', cls: 'g' }, { label: 'Bearbeiten', value: 'edit' }, { label: '+ Zum Angebot', value: 'add', cls: 'p' }]
+  });
+  if (res === 'add') await addToOffer(m);
+  if (res === 'edit') await editMaterial(m);
+  if (res === 'del' && await confirmDlg('Artikel löschen?', 'Löschen', true)) { S.mats.delete(m.id); await DB.del('materials', m.id); rebuildArr(); }
+}
+async function editMaterial(m) {
+  const isNew = !m; m = m || { sup: 'Eigene Artikel', artnr: '', txt1: '', txt2: '', unit: 'Stk', pe: 1, pkz: 2, price: 0 };
+  const supOpts = S.facets.sup.map(([s]) => `<option value="${esc(s)}">`).join('');
+  const res = await modal({
+    title: isNew ? 'Artikel anlegen' : 'Artikel bearbeiten', html: `
+    <datalist id="supl">${supOpts}</datalist>
+    <div class="g2 rs"><div><label class="f">Lieferant</label><input id="e_sup" list="supl" value="${esc(m.sup)}" ${isNew ? '' : 'disabled'}></div>
+    <div><label class="f">Artikelnummer</label><input id="e_art" value="${esc(m.artnr)}" ${isNew ? 'autofocus' : 'disabled'}></div></div>
+    <label class="f">Kurztext 1</label><input id="e_t1" value="${esc(m.txt1)}">
+    <label class="f">Kurztext 2</label><input id="e_t2" value="${esc(m.txt2 || '')}">
+    <div class="g2 rs"><div><label class="f">Hersteller</label><input id="e_mfr" value="${esc(m.mfr || '')}"></div>
+    <div><label class="f">EAN</label><input id="e_ean" inputmode="numeric" value="${esc(m.ean || '')}"></div>
+    <div><label class="f">Warengruppe</label><input id="e_wg" value="${esc(m.wg || m.hwg || '')}"></div>
+    <div><label class="f">Einheit</label><input id="e_unit" value="${esc(m.unit || 'Stk')}"></div>
+    <div><label class="f">EK netto € je Einheit</label><input id="e_ek" inputmode="decimal" value="${eur(ekOf(m))}"></div>
+    <div><label class="f">Fester VK € (leer = Aufschlag)</label><input id="e_vk" inputmode="decimal" value="${m.vkFix != null ? eur(m.vkFix) : ''}"></div></div>`,
+    buttons: [{ label: 'Abbrechen', value: null }, {
+      label: 'Speichern', cls: 'p', onClick: ov => {
+        const g = id => $('#' + id, ov).value.trim();
+        if (isNew && !g('e_art')) { toast('Artikelnummer fehlt'); return false; }
+        if (!g('e_t1')) { toast('Kurztext fehlt'); return false; }
+        return { sup: g('e_sup') || 'Eigene Artikel', artnr: g('e_art'), txt1: g('e_t1'), txt2: g('e_t2'), mfr: g('e_mfr'), ean: g('e_ean'), wg: g('e_wg'), unit: g('e_unit') || 'Stk', ek: g('e_ek'), vk: g('e_vk') };
+      }
+    }]
+  });
+  if (!res) return null;
+  const oldEk = ekOf(m);
+  if (isNew) { m.sup = res.sup; m.artnr = res.artnr; m.id = res.sup + '|' + res.artnr; m.manual = true; }
+  Object.assign(m, { txt1: res.txt1, txt2: res.txt2, mfr: res.mfr, ean: res.ean, wg: res.wg, unit: res.unit, upd: Date.now() });
+  const nek = parseNum(res.ek); if (isNew || Math.abs(nek - oldEk) > 0.004) m.ekFix = nek;
+  m.vkFix = res.vk ? parseNum(res.vk) : null; if (m.vkFix == null) delete m.vkFix;
+  m._s = sstr(m); S.mats.set(m.id, m); await DB.put('materials', stripMat(m)); rebuildArr();
+  toast('Artikel gespeichert'); return m;
+}
+async function manageSuppliers() {
+  const rabCount = s => [...S.rab.values()].filter(r => r.sup === s).length;
+  await modal({
+    title: 'Lieferanten / Großhändler', html: `<table class="simple"><tr><th>Lieferant</th><th class="right">Artikel</th><th class="right">Rabattgr.</th><th></th></tr>
+    ${S.facets.sup.map(([s, n]) => `<tr><td>${esc(s)}</td><td class="right">${n.toLocaleString('de-DE')}</td><td class="right">${rabCount(s)}</td><td class="right"><button class="btn sm g" data-del="${esc(s)}" style="color:var(--red)">Löschen</button></td></tr>`).join('') || '<tr><td colspan="4" class="muted">Keine Daten</td></tr>'}</table>
+    <p class="small muted">Beim Löschen werden alle Artikel und Rabattgruppen dieses Lieferanten entfernt. Angebote bleiben unverändert.</p>`,
+    buttons: [{ label: 'Schließen', value: true, cls: 'p' }],
+    onOpen: ov => ov.addEventListener('click', async e => {
+      const b = e.target.closest('[data-del]'); if (!b) return; const s = b.dataset.del;
+      if (!await confirmDlg(`Alle Artikel von <b>${esc(s)}</b> löschen?`, 'Löschen', true)) return;
+      const ids = S.arr.filter(m => m.sup === s).map(m => m.id); const rids = [...S.rab.values()].filter(r => r.sup === s).map(r => r.id);
+      const pr = progress('Lösche ' + s);
+      for (let i = 0; i < ids.length; i += 5000) { await DB.delMany('materials', ids.slice(i, i + 5000)); pr.set(i / ids.length); }
+      await DB.delMany('rabatt', rids); ids.forEach(id => S.mats.delete(id)); rids.forEach(id => S.rab.delete(id));
+      rebuildArr(); pr.close(); b.closest('tr').remove(); toast(`${ids.length} Artikel gelöscht`);
+    })
+  });
+}
+
+/* ---------------- Zeichensätze ---------------- */
+const CP850 = 'ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×ƒáíóúñÑªº¿®¬½¼¡«»░▒▓│┤ÁÂÀ©╣║╗╝¢¥┐└┴┬├─┼ãÃ╚╔╩╦╠═╬¤ðÐÊËÈıÍÎÏ┘┌█▄¦Ì▀ÓßÔÒõÕµþÞÚÛÙýÝ¯´­±‗¾¶§÷¸°¨·¹³²■ ';
+function decodeCP850(u8) { let s = ''; const CH = 8192; for (let i = 0; i < u8.length; i += CH) { const part = u8.subarray(i, i + CH); let t = ''; for (let j = 0; j < part.length; j++) { const b = part[j]; t += b < 128 ? String.fromCharCode(b) : CP850[b - 128]; } s += t; } return s; }
+function detectEnc(u8) {
+  try { new TextDecoder('utf-8', { fatal: true }).decode(u8, { stream: true }); return 'utf-8'; } catch (e) { }
+  let dos = 0, win = 0;
+  for (let i = 0; i < u8.length; i++) { const b = u8[i]; if (b === 0x81 || b === 0x84 || b === 0x94 || b === 0x8E || b === 0x99 || b === 0x9A || b === 0xE1) dos++; else if (b === 0xE4 || b === 0xF6 || b === 0xFC || b === 0xC4 || b === 0xD6 || b === 0xDC || b === 0xDF) win++; }
+  return dos >= win ? 'cp850' : 'windows-1252';
+}
+const ENC_LABEL = { auto: 'Automatisch erkennen', cp850: 'DOS / CP850 (DATANORM-Standard)', 'windows-1252': 'Windows-1252 / ANSI', 'utf-8': 'UTF-8' };
+async function readLines(file, enc, onLines, onProg) {
+  const CH = 2 * 1024 * 1024;
+  if (enc === 'auto') enc = detectEnc(new Uint8Array(await file.slice(0, Math.min(file.size, 1 << 20)).arrayBuffer()));
+  const td = enc === 'cp850' ? null : new TextDecoder(enc);
+  let off = 0, rest = '';
+  while (off < file.size) {
+    const u8 = new Uint8Array(await file.slice(off, off + CH).arrayBuffer()); off += u8.length;
+    const txt = rest + (td ? td.decode(u8, { stream: off < file.size }) : decodeCP850(u8));
+    const lines = txt.split(/\r\n|\n|\r/); rest = lines.pop();
+    await onLines(lines); onProg && onProg(off / file.size); await sleep0();
+  }
+  if (rest) await onLines([rest]);
+  return enc;
+}
+async function readText(file, enc) {
+  const u8 = new Uint8Array(await file.arrayBuffer());
+  if (enc === 'auto') enc = detectEnc(u8.subarray(0, 1 << 20));
+  return enc === 'cp850' ? decodeCP850(u8) : new TextDecoder(enc).decode(u8);
+}
+
+/* ---------------- DATANORM-Import ---------------- */
+function dnPrice(s) { s = String(s ?? '').trim(); if (!s) return null; if (/[.,]/.test(s)) return parseNum(s); const v = parseInt(s, 10); return isFinite(v) ? v / 100 : null; }
+function dnPE(s) { const v = parseInt(String(s ?? '').trim(), 10); if (!isFinite(v)) return 1; if (v >= 0 && v <= 3) return Math.pow(10, v); return v; }
+class DNImporter {
+  constructor(sup) { this.sup = sup; this.dirty = new Map(); this.del = new Set(); this.rabs = []; this.st = { neu: 0, upd: 0, del: 0, rab: 0, lines: 0, version: '' }; this.seen = new Set(); }
+  rec(artnr) {
+    const id = this.sup + '|' + artnr;
+    let m = this.dirty.get(id) || S.mats.get(id);
+    if (!this.seen.has(id)) { this.seen.add(id); if (m) this.st.upd++; else this.st.neu++; }
+    if (!m) m = { id, sup: this.sup, artnr, txt1: '', txt2: '', unit: 'Stk', pe: 1, pkz: 1, price: 0 };
+    this.del.delete(id); m.upd = Date.now(); this.dirty.set(id, m); return m;
+  }
+  line(l) {
+    if (!l || l.length < 3) return;
+    const f = l.split(';'); const t = f[0].trim().toUpperCase(); this.st.lines++;
+    const g = i => (f[i] ?? '').trim();
+    if (t === 'V') { const v = f.map(x => x.trim()).find(x => x === '04' || x === '05' || x === '4' || x === '5'); if (v) this.st.version = 'DATANORM ' + (+v); return; }
+    if (t === 'A') {
+      const art = g(2); if (!art) return;
+      if (g(1).toUpperCase() === 'L') { const id = this.sup + '|' + art; this.dirty.delete(id); if (S.mats.has(id)) { this.del.add(id); this.st.del++; } return; }
+      const m = this.rec(art);
+      if (g(4)) m.txt1 = g(4); m.txt2 = g(5);
+      m.pkz = +g(6) || 1; m.pe = dnPE(g(7)); m.unit = g(8) || m.unit || 'Stk';
+      const p = dnPrice(g(9)); if (p != null) { m.price = p; delete m.ekFix; }
+      if (g(10)) m.rg = g(10); if (g(11)) m.hwg = g(11);
+      return;
+    }
+    if (t === 'B') {
+      const art = g(2); if (!art) return; if (g(1).toUpperCase() === 'L') return;
+      const m = this.rec(art);
+      if (g(3)) m.match = g(3);
+      let ean = ''; for (let i = 6; i <= 10; i++) if (/^\d{8,14}$/.test(g(i))) { ean = g(i); break; }
+      if (ean) m.ean = ean;
+      if (g(10) && !/^\d{8,14}$/.test(g(10))) m.wg = g(10);
+      const mf = g(13); if (mf && !/^[\d.\-\/]+$/.test(mf)) m.mfr = mf; else if (!m.mfr && g(3) && /[A-Za-zÄÖÜäöü]/.test(g(3))) m.mfr = g(3);
+      if (g(14)) m.mfrNr = g(14);
+      return;
+    }
+    if (t === 'P') {
+      for (let i = 2; i + 2 < f.length; i += 7) {
+        const art = g(i); if (!art) continue;
+        const m = this.rec(art); const p = dnPrice(g(i + 2));
+        m.pkz = +g(i + 1) || m.pkz || 1; if (p != null) { m.price = p; delete m.ekFix; }
+        const rkz = +g(i + 3), r1 = g(i + 4);
+        if (rkz && r1 && parseNum(r1)) m.rab = /[.,]/.test(r1) ? parseNum(r1) : +r1 / 100;
+      }
+      return;
+    }
+    if (t === 'R') {
+      const rg = g(2); if (!rg) return;
+      const kz = +g(3) || 1, raw = g(4); let v = /[.,]/.test(raw) ? parseNum(raw) : (+raw || 0);
+      let pct = kz === 2 ? (1 - (/[.,]/.test(raw) ? v : v / 1000)) * 100 : (/[.,]/.test(raw) ? v : v / 100);
+      this.rabs.push({ id: this.sup + '|' + rg, sup: this.sup, rg, pct: r2(pct), text: g(5) }); this.st.rab++;
+    }
+  }
+  async flush(force) {
+    if (this.dirty.size >= 3000 || (force && this.dirty.size)) {
+      const arr = [...this.dirty.values()];
+      await DB.putMany('materials', arr.map(stripMat));
+      for (const m of arr) { m._s = sstr(m); S.mats.set(m.id, m); }
+      this.dirty.clear();
+    }
+    if (force && this.del.size) { await DB.delMany('materials', [...this.del]); for (const id of this.del) S.mats.delete(id); this.del.clear(); }
+    if (this.rabs.length && (force || this.rabs.length > 2000)) { await DB.putMany('rabatt', this.rabs); for (const r of this.rabs) S.rab.set(r.id, r); this.rabs = []; }
+  }
+}
+async function importDatanormDlg() {
+  const supOpts = S.facets.sup.map(([s]) => `<option value="${esc(s)}">`).join('');
+  let files = [];
+  const res = await modal({
+    title: 'DATANORM importieren', html: `
+    <p class="small muted">Unterstützt DATANORM 4 und 5 (A-, B-, P-, R-Sätze; Rabattgruppen-Datei). Mehrere Dateien eines Lieferanten auf einmal möglich (z. B. DATANORM.001, DATPREIS.001, DATANORM.RAB). Vorhandene Artikel werden aktualisiert.</p>
+    <datalist id="supl">${supOpts}</datalist>
+    <label class="f">Lieferant / Großhändler *</label><input id="d_sup" list="supl" placeholder="z. B. GC, Weinmann & Schanz" autofocus>
+    <label class="f">Dateien *</label><button class="btn b" id="d_pick" style="width:100%">Dateien auswählen…</button><div id="d_files" class="small muted" style="margin-top:4px"></div>
+    <label class="f">Zeichensatz</label><select id="d_enc">${Object.entries(ENC_LABEL).map(([k, l]) => `<option value="${k}">${l}</option>`).join('')}</select>`,
+    buttons: [{ label: 'Abbrechen', value: null }, { label: 'Import starten', cls: 'p', onClick: ov => { const s = $('#d_sup', ov).value.trim(); if (!s) { toast('Bitte Lieferant angeben'); return false; } if (!files.length) { toast('Bitte Datei(en) auswählen'); return false; } return { sup: s, enc: $('#d_enc', ov).value }; } }],
+    onOpen: ov => $('#d_pick', ov).onclick = async () => {
+      files = await pickFile('', true);
+      files.sort((a, b) => (/\.rab$/i.test(a.name) ? 1 : 0) - (/\.rab$/i.test(b.name) ? 1 : 0) || a.name.localeCompare(b.name));
+      $('#d_files', ov).innerHTML = files.map(f => `📄 ${esc(f.name)} (${(f.size / 1024).toFixed(0)} KB)`).join('<br>');
+    }
+  });
+  if (!res) return;
+  const total = files.reduce((a, f) => a + f.size, 0) || 1; let done = 0;
+  const pr = progress('DATANORM-Import: ' + res.sup);
+  const imp = new DNImporter(res.sup); const encs = [];
+  try {
+    for (const f of files) {
+      const e = await readLines(f, res.enc, async lines => { for (const l of lines) imp.line(l); await imp.flush(false); }, p => pr.set((done + p * f.size) / total, `${f.name}: ${Math.round(p * 100)} % · ${imp.st.lines.toLocaleString('de-DE')} Zeilen · ${(imp.st.neu + imp.st.upd).toLocaleString('de-DE')} Artikel`));
+      done += f.size; encs.push(e);
+    }
+    pr.set(1, 'Speichere…'); await imp.flush(true);
+  } catch (err) { pr.close(); await modal({ title: 'Fehler beim Import', html: `<p>${esc(err.message || err)}</p>` }); return; }
+  rebuildArr(); pr.close();
+  await modal({ title: 'Import abgeschlossen', html: importSummary(imp.st, encs), buttons: [{ label: 'OK', value: true, cls: 'p' }] });
+}
+function importSummary(st, encs) {
+  return `<div class="kv" style="margin-top:10px">${st.version ? `<span>Format</span><b>${st.version}</b>` : ''}<span>Zeilen</span><b>${st.lines.toLocaleString('de-DE')}</b>
+  <span>Neue Artikel</span><b style="color:var(--ok)">${st.neu.toLocaleString('de-DE')}</b><span>Aktualisiert</span><b>${st.upd.toLocaleString('de-DE')}</b>
+  ${st.del ? `<span>Gelöscht</span><b>${st.del}</b>` : ''}${st.rab ? `<span>Rabattgruppen</span><b>${st.rab}</b>` : ''}
+  ${encs && encs.length ? `<span>Zeichensatz</span><span>${[...new Set(encs)].join(', ')}</span>` : ''}</div>`;
+}
+
+/* ---------------- CSV-Import ---------------- */
+function parseCSV(text, d) {
+  const rows = []; let row = [], f = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; continue; }
+    if (c === '"' && f === '') q = true;
+    else if (c === d) { row.push(f); f = ''; }
+    else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(f); f = ''; if (row.length > 1 || row[0] !== '') rows.push(row); row = []; }
+    else f += c;
+  }
+  if (f !== '' || row.length) { row.push(f); rows.push(row); }
+  return rows;
+}
+const CSV_FIELDS = [['artnr', 'Artikelnummer *', /art.*n|artikel|^nr|sku|bestell/i], ['txt1', 'Kurztext 1 / Bezeichnung *', /bezeich|kurztext ?1|^text|beschreib|name/i], ['txt2', 'Kurztext 2', /kurztext ?2|zusatz|text ?2/i],
+['ean', 'EAN / GTIN', /ean|gtin/i], ['mfr', 'Hersteller', /herstell|marke|brand|fabrikat/i], ['wg', 'Warengruppe', /waren|gruppe|kategor/i], ['unit', 'Einheit', /einheit|me$|unit/i],
+['ek', 'EK netto (Ihr Preis)', /ek|netto|einkauf/i], ['list', 'Listenpreis (brutto)', /liste|brutto|upe|vk/i], ['rg', 'Rabattgruppe', /rabatt/i], ['pe', 'Preiseinheit (1/10/100)', /preiseinh|^pe$/i], ['mfrNr', 'Hersteller-Artikelnr.', /herst.*nr|hersteller.?art/i]];
+async function importCsvDlg() {
+  const [file] = await pickFile('.csv,.txt,text/csv'); if (!file) return;
+  let enc = 'auto', text = await readText(file, enc);
+  const guessD = t => { const l = t.split(/\r?\n/, 1)[0]; const c = { ';': (l.match(/;/g) || []).length, ',': (l.match(/,/g) || []).length, '\t': (l.match(/\t/g) || []).length, '|': (l.match(/\|/g) || []).length }; return Object.entries(c).sort((a, b) => b[1] - a[1])[0][0]; };
+  let delim = guessD(text), rows = parseCSV(text, delim), header = true;
+  const supOpts = S.facets.sup.map(([s]) => `<option value="${esc(s)}">`).join('');
+  const mapHTML = () => {
+    const cols = rows[0] || []; const used = new Set();
+    return CSV_FIELDS.map(([k, l, rx]) => {
+      let def = -1; if (header) def = cols.findIndex((c, i) => !used.has(i) && rx.test(c)); if (def >= 0) used.add(def);
+      return `<div><label class="f">${l}</label><select data-map="${k}"><option value="-1">– nicht verwenden –</option>${cols.map((c, i) => `<option value="${i}" ${i === def ? 'selected' : ''}>${header ? esc(c) : 'Spalte ' + (i + 1)} ${!header ? '· ' + esc(String(c).slice(0, 20)) : ''}</option>`).join('')}</select></div>`;
+    }).join('');
+  };
+  const prevHTML = () => `<div style="overflow:auto;max-height:150px"><table class="simple">${rows.slice(0, 4).map((r, i) => `<tr>${r.map(c => `<${i === 0 && header ? 'th' : 'td'} class="nowrap">${esc(String(c).slice(0, 30))}</${i === 0 && header ? 'th' : 'td'}>`).join('')}</tr>`).join('')}</table></div>`;
+  const res = await modal({
+    title: 'CSV importieren: ' + file.name, wide: true, html: `
+    <datalist id="supl">${supOpts}</datalist>
+    <div class="g3 rs"><div><label class="f">Lieferant *</label><input id="c_sup" list="supl" placeholder="z. B. GC"></div>
+    <div><label class="f">Trennzeichen</label><select id="c_d">${[[';', 'Semikolon ;'], [',', 'Komma ,'], ['\t', 'Tabulator'], ['|', 'Pipe |']].map(([v, l]) => `<option value="${v === '\t' ? 'tab' : v}" ${v === delim ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+    <div><label class="f">Zeichensatz</label><select id="c_enc">${Object.entries(ENC_LABEL).map(([k, l]) => `<option value="${k}">${l}</option>`).join('')}</select></div></div>
+    <label style="display:flex;align-items:center;margin-top:10px"><input type="checkbox" id="c_h" checked> Erste Zeile enthält Spaltenüberschriften</label>
+    <h3 style="margin-top:12px">Vorschau <span class="small muted" id="c_n">(${rows.length.toLocaleString('de-DE')} Zeilen)</span></h3><div id="c_prev">${prevHTML()}</div>
+    <h3 style="margin-top:12px">Spalten zuordnen</h3><div class="g3 rs" id="c_map">${mapHTML()}</div>
+    <p class="small muted">Preise im deutschen Format (1.234,56) oder 1234.56. Ist nur der Listenpreis vorhanden, wird der EK über die Rabattgruppe des Lieferanten berechnet.</p>`,
+    buttons: [{ label: 'Abbrechen', value: null }, {
+      label: 'Import starten', cls: 'p', onClick: ov => {
+        const sup = $('#c_sup', ov).value.trim(); if (!sup) { toast('Bitte Lieferant angeben'); return false; }
+        const map = {}; $$('[data-map]', ov).forEach(s => map[s.dataset.map] = +s.value);
+        if (map.artnr < 0 || map.txt1 < 0) { toast('Artikelnummer und Kurztext zuordnen'); return false; }
+        return { sup, map };
+      }
+    }],
+    onOpen: ov => {
+      const refresh = async (reparse) => {
+        if (reparse) { const d = $('#c_d', ov).value; delim = d === 'tab' ? '\t' : d; rows = parseCSV(text, delim); }
+        header = $('#c_h', ov).checked; $('#c_prev', ov).innerHTML = prevHTML(); $('#c_map', ov).innerHTML = mapHTML(); $('#c_n', ov).textContent = `(${rows.length.toLocaleString('de-DE')} Zeilen)`;
+      };
+      $('#c_d', ov).onchange = () => refresh(true); $('#c_h', ov).onchange = () => refresh(false);
+      $('#c_enc', ov).onchange = async () => { enc = $('#c_enc', ov).value; text = await readText(file, enc); refresh(true); };
+    }
+  });
+  if (!res) return;
+  const { sup, map } = res, data = header ? rows.slice(1) : rows;
+  const pr = progress('CSV-Import: ' + sup); const st = { neu: 0, upd: 0, lines: data.length, rab: 0, del: 0 };
+  const get = (r, k) => map[k] >= 0 ? String(r[map[k]] ?? '').trim() : '';
+  let batch = [];
+  for (let i = 0; i < data.length; i++) {
+    const r = data[i], art = get(r, 'artnr'); if (!art) continue;
+    const id = sup + '|' + art; let m = S.mats.get(id);
+    if (m) st.upd++; else { st.neu++; m = { id, sup, artnr: art, txt1: '', txt2: '', unit: 'Stk', pe: 1, pkz: 1, price: 0 }; }
+    const t1 = get(r, 'txt1'); if (t1) m.txt1 = t1;
+    for (const k of ['txt2', 'ean', 'mfr', 'wg', 'unit', 'rg', 'mfrNr']) { const v = get(r, k); if (v) m[k] = v; }
+    const pe = map.pe >= 0 ? (parseNum(get(r, 'pe')) || 1) : 1; m.pe = pe;
+    if (map.list >= 0 && get(r, 'list')) { m.price = parseNum(get(r, 'list')); m.pkz = 1; delete m.ekFix; }
+    if (map.ek >= 0 && get(r, 'ek')) { m.ekFix = parseNum(get(r, 'ek')) / pe; }
+    m.upd = Date.now(); m._s = sstr(m); S.mats.set(id, m); batch.push(stripMat(m));
+    if (batch.length >= 3000) { await DB.putMany('materials', batch); batch = []; pr.set(i / data.length, `${i.toLocaleString('de-DE')} / ${data.length.toLocaleString('de-DE')} Zeilen`); await sleep0(); }
+  }
+  if (batch.length) await DB.putMany('materials', batch);
+  rebuildArr(); pr.close();
+  await modal({ title: 'Import abgeschlossen', html: importSummary(st) });
+}
+
+/* =====================================================================
+   KUNDEN
+   ===================================================================== */
+const KQ = { q: '' };
+function viewCustomers() {
+  view.innerHTML = `<h2>Kunden</h2>
+  <div class="searchbox" style="margin-bottom:10px"><input id="kq" type="search" placeholder="Name, Ort, Telefon, E-Mail…" value="${esc(KQ.q)}"></div>
+  <div class="card list" style="padding:0" id="klist"></div>
+  <button class="fab" data-a="new">+ Neuer Kunde</button>`;
+  const render = () => {
+    const list = filterCustomers(KQ.q);
+    $('#klist').innerHTML = list.length ? list.map(c => {
+      const n = S.offers.filter(o => o.kundeId === c.id).length;
+      return `<div class="item" data-id="${c.id}"><div style="flex:1;min-width:0"><b>${esc(custName(c))}</b>${c.firma && (c.nachname || c.vorname) ? `<span class="muted"> · ${esc([c.vorname, c.nachname].filter(Boolean).join(' '))}</span>` : ''}
+      <div class="small muted">${esc([c.strasse, [c.plz, c.ort].filter(Boolean).join(' ')].filter(Boolean).join(', '))}</div>
+      <div class="small muted">${esc([c.tel, c.email].filter(Boolean).join(' · '))}</div></div>
+      <div class="right small"><span class="badge">${n} Angebot${n === 1 ? '' : 'e'}</span><br><button class="btn sm b" data-newo="${c.id}" style="margin-top:6px">+ Angebot</button></div></div>`;
+    }).join('') : `<div class="empty">${S.customers.length ? 'Keine Treffer.' : 'Noch keine Kunden angelegt.'}</div>`;
+  };
+  render();
+  view.oninput = e => { if (e.target.id === 'kq') { KQ.q = e.target.value; render(); } };
+  view.onclick = async e => {
+    if (e.target.closest('[data-a="new"]')) { if (await editCustomer()) render(); return; }
+    const no = e.target.closest('[data-newo]');
+    if (no) { const c = S.customers.find(x => x.id === no.dataset.newo); const o = newOffer(c); S.offers.push(o); await saveOfferNow(o); setCur(o.id); go('#/angebot/' + o.id); return; }
+    const it = e.target.closest('.item'); if (it) { const c = S.customers.find(x => x.id === it.dataset.id); await editCustomer(c); render(); }
+  };
+}
+function filterCustomers(q) {
+  const t = norm(q).split(/\s+/).filter(Boolean);
+  return S.customers.filter(c => !t.length || t.every(x => norm(Object.values(c).join(' ')).includes(x))).sort((a, b) => custName(a).localeCompare(custName(b), 'de'));
+}
+async function editCustomer(c) {
+  const isNew = !c; c = c || { anrede: 'Herr' };
+  const f = (id, l, v, extra = '') => `<div><label class="f">${l}</label><input id="k_${id}" value="${esc(v || '')}" ${extra}></div>`;
+  const res = await modal({
+    title: isNew ? 'Neuer Kunde' : 'Kunde bearbeiten', html: `
+    <div class="g2"><div><label class="f">Anrede</label><select id="k_anrede">${['Herr', 'Frau', 'Firma', 'Familie', ''].map(a => `<option ${c.anrede === a ? 'selected' : ''} value="${a}">${a || '–'}</option>`).join('')}</select></div>${f('titel', 'Titel', c.titel, 'placeholder="z. B. Dr."')}</div>
+    <div class="g2 rs">${f('vorname', 'Vorname', c.vorname)}${f('nachname', 'Nachname', c.nachname, 'autofocus')}</div>
+    ${f('firma', 'Firma (optional)', c.firma)}
+    ${f('strasse', 'Straße, Hausnr.', c.strasse)}
+    <div class="g2" style="grid-template-columns:1fr 2fr">${f('plz', 'PLZ', c.plz, 'inputmode="numeric"')}${f('ort', 'Ort', c.ort)}</div>
+    <div class="g2 rs">${f('tel', 'Telefon', c.tel, 'type="tel"')}${f('email', 'E-Mail', c.email, 'type="email"')}</div>
+    <label class="f">Notiz</label><textarea id="k_notiz" rows="2">${esc(c.notiz || '')}</textarea>`,
+    buttons: [...(isNew ? [] : [{ label: 'Löschen', value: 'del', cls: 'g' }]), { label: 'Abbrechen', value: null }, {
+      label: 'Speichern', cls: 'p', onClick: ov => {
+        const o = {}; for (const k of ['anrede', 'titel', 'vorname', 'nachname', 'firma', 'strasse', 'plz', 'ort', 'tel', 'email', 'notiz']) o[k] = $('#k_' + k, ov).value.trim();
+        if (!o.nachname && !o.firma && !o.vorname) { toast('Bitte Name oder Firma eingeben'); return false; } return o;
+      }
+    }]
+  });
+  if (res === 'del') {
+    if (!await confirmDlg(`Kunde <b>${esc(custName(c))}</b> löschen? Bestehende Angebote behalten die Adresse.`, 'Löschen', true)) return null;
+    S.customers = S.customers.filter(x => x.id !== c.id); await DB.del('customers', c.id); toast('Kunde gelöscht'); return null;
+  }
+  if (!res) return null;
+  Object.assign(c, res); if (isNew) { c.id = uid(); c.created = Date.now(); S.customers.push(c); }
+  await DB.put('customers', c); toast('Kunde gespeichert'); return c;
+}
+async function pickCustomer() {
+  const r = await modal({
+    title: 'Kunde wählen', html: `<div class="searchbox" style="margin:8px 0"><input id="pk" type="search" placeholder="Suchen…" autofocus></div><div class="list card" style="padding:0;max-height:55vh;overflow:auto" id="pkl"></div>`,
+    buttons: [{ label: '+ Neuer Kunde', value: 'new' }],
+    onOpen: ov => {
+      const ren = () => { const l = filterCustomers($('#pk', ov).value); $('#pkl', ov).innerHTML = l.map(c => `<div class="item" data-cid="${c.id}"><div><b>${esc(custName(c))}</b><div class="small muted">${esc([c.strasse, c.plz, c.ort].filter(Boolean).join(' '))}</div></div></div>`).join('') || '<div class="empty small">Keine Kunden gefunden.</div>'; };
+      ren(); $('#pk', ov).oninput = ren;
+      ov.addEventListener('click', e => { const it = e.target.closest('[data-cid]'); if (it) ov._close(it.dataset.cid); });
+    }
+  });
+  if (r === 'new') return editCustomer();
+  return r ? S.customers.find(c => c.id === r) : null;
+}
+
+/* =====================================================================
+   EINSTELLUNGEN
+   ===================================================================== */
+function viewSettings() {
+  const s = S.settings;
+  const fi = (k, l, extra = '') => `<div><label class="f">${l}</label><input data-s="${k}" value="${esc(s[k] ?? '')}" ${extra}></div>`;
+  const grpDl = S.facets.grp.map(([g]) => `<option value="${esc(g)}">`).join('');
+  view.innerHTML = `<h2>Einstellungen</h2>
+  <details class="card" open><summary>Firma</summary>
+   <label class="f">Logo (erscheint auf jedem Angebot)</label>
+   <div class="row"><img class="logo-prev" id="lp" src="${logoSrc()}"><div class="row"><button class="btn b sm" data-a="logo">Logo auswählen…</button>${s.logo ? '<button class="btn sm g" data-a="logodel">Entfernen</button>' : ''}</div></div>
+   ${!s.logo ? '<div class="small muted" style="margin-top:4px">Aktuell wird ein Platzhalter-Logo verwendet.</div>' : ''}
+   <div class="g2 rs">${fi('firma', 'Firmenname')}${fi('zusatz', 'Zusatz / Gewerke')}${fi('inhaber', 'Inhaber')}${fi('hwk', 'Handwerkskammer / Register (optional)')}
+   ${fi('strasse', 'Straße, Nr.')}<div class="g2" style="grid-template-columns:1fr 2fr;gap:0 8px">${fi('plz', 'PLZ', 'inputmode="numeric"')}${fi('ort', 'Ort')}</div>
+   ${fi('tel', 'Telefon', 'type="tel"')}${fi('mobil', 'Mobil', 'type="tel"')}${fi('email', 'E-Mail', 'type="email"')}${fi('web', 'Web')}
+   ${fi('steuernr', 'Steuernummer')}${fi('ustid', 'USt-IdNr.')}${fi('bank', 'Bank')}${fi('iban', 'IBAN')}${fi('bic', 'BIC')}</div>
+  </details>
+  <details class="card"><summary>Kalkulation</summary>
+   <div class="g2 rs">${fi('stundensatz', 'Stundensatz € (netto)', 'inputmode="decimal" data-n="1"')}${fi('mwst', 'MwSt %', 'inputmode="decimal" data-n="1"')}
+   ${fi('gueltig', 'Angebot gültig (Tage)', 'inputmode="numeric" data-n="1"')}${fi('aufschlag', 'Allgemeiner Aufschlag auf EK %', 'inputmode="decimal" data-n="1"')}</div>
+   <label style="display:flex;align-items:center;margin-top:12px"><input type="checkbox" data-s="lohnanteil" ${s.lohnanteil ? 'checked' : ''}> Lohnanteil nach §35a EStG im Angebot ausweisen</label>
+   <h3 style="margin-top:16px">Aufschlag je Warengruppe</h3>
+   <p class="small muted" style="margin-top:0">Code = Warengruppe, Hauptwarengruppe oder Rabattgruppe aus den Artikeldaten. Nicht aufgeführte Gruppen erhalten den allgemeinen Aufschlag.</p>
+   <datalist id="grpl">${grpDl}</datalist>
+   <table class="simple" id="grpt"><tr><th style="width:28%">Code</th><th>Bezeichnung</th><th style="width:22%">Aufschlag %</th><th></th></tr>
+   ${(s.gruppen || []).map((g, i) => `<tr><td><input list="grpl" data-g="${i}" data-gk="code" value="${esc(g.code)}"></td><td><input data-g="${i}" data-gk="name" value="${esc(g.name || '')}"></td><td><input inputmode="decimal" data-g="${i}" data-gk="pct" value="${esc(g.pct ?? '')}"></td><td><button class="ib" data-gdel="${i}" style="color:var(--red)">✕</button></td></tr>`).join('')}</table>
+   <button class="btn sm" data-a="gadd" style="margin-top:8px">+ Gruppe</button>
+  </details>
+  <details class="card"><summary>Angebotsnummer</summary>
+   <div class="g2 rs">${fi('nrFormat', 'Format')}${fi('nrNext', 'Nächste laufende Nummer', 'inputmode="numeric" data-n="1"')}</div>
+   <p class="small muted">Platzhalter: {JJJJ} Jahr, {JJ} Jahr 2-stellig, {MM} Monat, {NR:3} laufende Nummer 3-stellig. Bei Jahreswechsel beginnt die Zählung neu bei 1.<br>Nächste Nummer: <b id="nrPrev">${esc(formatNr(s.nrFormat, s.nrNext))}</b></p>
+  </details>
+  <details class="card"><summary>Standardtexte</summary>
+   <label class="f">Einleitungstext</label><textarea data-s="einleitung" rows="4">${esc(s.einleitung)}</textarea>
+   <label class="f">Schlusstext / Zahlungsbedingungen</label><textarea data-s="schluss" rows="8">${esc(s.schluss)}</textarea>
+   <p class="small muted">Platzhalter: {BRIEFANREDE} {GUELTIG_BIS} {NUMMER} {DATUM} {BAUVORHABEN}. Gilt für neue Angebote.</p>
+  </details>
+  <details class="card" open><summary>Datensicherung</summary>
+   <p class="small muted">Alle Daten (Einstellungen, Logo, Kunden, Angebote, Artikel, Rabattgruppen) als eine JSON-Datei sichern bzw. wiederherstellen. Bitte regelmäßig sichern – die Daten liegen nur in diesem Browser.</p>
+   <div class="kv" style="margin-bottom:10px"><span>Angebote</span><b>${S.offers.length}</b><span>Kunden</span><b>${S.customers.length}</b><span>Artikel</span><b>${S.arr.length.toLocaleString('de-DE')}</b><span>Rabattgruppen</span><b>${S.rab.size}</b><span>Speicher</span><span id="quota">…</span></div>
+   <div class="row"><button class="btn p" data-a="export">⇩ Sicherung exportieren</button><button class="btn" data-a="import">⇧ Sicherung wiederherstellen</button></div>
+   <div class="row" style="margin-top:12px"><button class="btn sm b" data-a="demo">Beispieldaten laden</button><button class="btn sm g" data-a="wipe" style="color:var(--red)">Alle Daten löschen</button></div>
+  </details>
+  <p class="small muted center" style="text-align:center">FMÖ Angebot v${APPVER} · läuft komplett offline im Browser</p>`;
+  navigator.storage?.estimate?.().then(q => { const el = $('#quota'); if (el) el.textContent = `${(q.usage / 1048576).toFixed(1)} MB belegt von ${(q.quota / 1048576 / 1024).toFixed(1)} GB`; }).catch(() => { });
+  $$('textarea', view).forEach(autoGrow);
+  view.oninput = e => {
+    const el = e.target, d = el.dataset;
+    if (el.tagName === 'TEXTAREA') autoGrow(el);
+    if (d.s) { s[d.s] = el.type === 'checkbox' ? el.checked : d.n ? parseNum(el.value) : el.value; saveSettings(); if (['nrFormat', 'nrNext'].includes(d.s)) $('#nrPrev').textContent = formatNr(s.nrFormat, s.nrNext); if (['firma', 'zusatz'].includes(d.s)) refreshHeader(); }
+    if (d.g != null) { const g = s.gruppen[+d.g]; g[d.gk] = d.gk === 'pct' ? (el.value === '' ? '' : parseNum(el.value)) : el.value; rebuildGrpMap(); saveSettings(); }
+  };
+  view.onchange = view.oninput;
+  view.onclick = async e => {
+    const a = e.target.closest('[data-a]')?.dataset.a;
+    const gd = e.target.closest('[data-gdel]'); if (gd) { s.gruppen.splice(+gd.dataset.gdel, 1); rebuildGrpMap(); saveSettings(); viewSettings(); return; }
+    if (a === 'gadd') { s.gruppen.push({ code: '', name: '', pct: s.aufschlag }); saveSettings(); const op = $$('details', view).map(d => d.open); viewSettings(); $$('details', view).forEach((d, i) => d.open = op[i]); return; }
+    if (a === 'logo') { const [f] = await pickFile('image/*'); if (!f) return; s.logo = await loadImage(f); await DB.kvSet('settings', s); refreshHeader(); viewSettings(); toast('Logo gespeichert'); return; }
+    if (a === 'logodel') { s.logo = ''; await DB.kvSet('settings', s); refreshHeader(); viewSettings(); return; }
+    if (a === 'export') return exportBackup();
+    if (a === 'import') return importBackup();
+    if (a === 'demo') return loadDemo();
+    if (a === 'wipe') {
+      if (!await confirmDlg('Wirklich <b>alle Daten</b> (Angebote, Kunden, Artikel, Einstellungen) löschen? Dies kann nicht rückgängig gemacht werden.', 'Alles löschen', true)) return;
+      for (const st of ['kv', 'materials', 'customers', 'offers', 'rabatt']) await DB.clear(st);
+      location.reload();
+    }
+  };
+}
+function loadImage(file) {
+  return new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onload = () => {
+      if (/svg/.test(file.type)) return res(fr.result);
+      const img = new Image();
+      img.onload = () => { const max = 900, k = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); res(c.toDataURL('image/png')); };
+      img.onerror = rej; img.src = fr.result;
+    };
+    fr.onerror = rej; fr.readAsDataURL(file);
+  });
+}
+
+/* ---------------- Datensicherung ---------------- */
+async function exportBackup() {
+  const pr = progress('Sicherung wird erstellt…'); pr.set(.2);
+  const data = { app: APP, version: APPVER, exported: new Date().toISOString(), settings: S.settings, favs: S.favs, recent: S.recent, customers: S.customers, offers: S.offers, rabatt: [...S.rab.values()], materials: S.arr.map(stripMat) };
+  pr.set(.6); const json = JSON.stringify(data); pr.close();
+  const d = new Date(); download(`FMOE-Sicherung-${isoToday()}-${pad(d.getHours())}${pad(d.getMinutes())}.json`, json);
+  toast(`Sicherung erstellt (${(json.length / 1048576).toFixed(1)} MB)`);
+}
+async function importBackup() {
+  const [f] = await pickFile('.json,application/json'); if (!f) return;
+  let data; try { data = JSON.parse(await f.text()); } catch (e) { return modal({ title: 'Fehler', html: '<p>Die Datei ist keine gültige JSON-Sicherung.</p>' }); }
+  if (data.app !== APP) return modal({ title: 'Fehler', html: '<p>Diese Datei ist keine FMÖ-Angebot-Sicherung.</p>' });
+  if (!await confirmDlg(`Sicherung vom <b>${new Date(data.exported).toLocaleString('de-DE')}</b> wiederherstellen?<br><br>${data.offers?.length || 0} Angebote, ${data.customers?.length || 0} Kunden, ${(data.materials?.length || 0).toLocaleString('de-DE')} Artikel.<br><br><b>Alle aktuellen Daten werden ersetzt.</b>`, 'Wiederherstellen', true)) return;
+  const pr = progress('Wiederherstellung…');
+  for (const st of ['kv', 'materials', 'customers', 'offers', 'rabatt']) await DB.clear(st);
+  await DB.kvSet('settings', { ...DEF, ...(data.settings || {}) }); await DB.kvSet('favs', data.favs || []); await DB.kvSet('recent', data.recent || []);
+  await DB.putMany('customers', data.customers || []); await DB.putMany('offers', data.offers || []); await DB.putMany('rabatt', data.rabatt || []);
+  const mats = data.materials || [];
+  for (let i = 0; i < mats.length; i += 5000) { await DB.putMany('materials', mats.slice(i, i + 5000)); pr.set(i / mats.length, `${i.toLocaleString('de-DE')} / ${mats.length.toLocaleString('de-DE')} Artikel`); await sleep0(); }
+  pr.close(); location.hash = '#/angebote'; location.reload();
+}
+
+/* =====================================================================
+   DRUCK / PDF
+   ===================================================================== */
+function cssStr(s) { return '"' + String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\A ') + '"'; }
+function footerCols() {
+  const s = S.settings;
+  return [
+    [s.firma, s.zusatz, s.strasse, [s.plz, s.ort].filter(Boolean).join(' '), s.inhaber ? 'Inhaber: ' + s.inhaber : ''].filter(Boolean).join('\n'),
+    [s.tel ? 'Tel. ' + s.tel : '', s.mobil ? 'Mobil ' + s.mobil : '', s.email, s.web].filter(Boolean).join('\n'),
+    [s.steuernr ? 'St.-Nr. ' + s.steuernr : '', s.ustid ? 'USt-IdNr. ' + s.ustid : '', s.hwk].filter(Boolean).join('\n'),
+    [s.bank, s.iban ? 'IBAN ' + s.iban : '', s.bic ? 'BIC ' + s.bic : ''].filter(Boolean).join('\n')
+  ];
+}
+function buildSheet(o) {
+  const s = S.settings, c = calc(o);
+  const ret = [s.firma, s.strasse, [s.plz, s.ort].filter(Boolean).join(' ')].filter(Boolean).join(' · ');
+  const to = [o.adr.name, o.adr.zusatz, o.adr.strasse, o.adr.plzort].filter(Boolean).join('\n');
+  const kunde = S.customers.find(k => k.id === o.kundeId);
+  let rows = '';
+  o.titel.forEach((t, ti) => {
+    if (!t.pos.length) return;
+    rows += `<tr class="tt"><td>${ti + 1}</td><td colspan="5">${esc(t.name)}</td></tr>`;
+    t.pos.forEach((p, pi) => {
+      if (p.typ === 'text') { rows += `<tr class="tx"><td></td><td colspan="5" class="ds">${esc(p.text)}</td></tr>`; return; }
+      const gp = r2((+p.menge || 0) * (+p.ep || 0));
+      const lines = esc(p.text).split('\n'); const desc = `<b>${lines[0] || ''}</b>${lines.length > 1 ? '\n' + lines.slice(1).join('\n') : ''}`;
+      rows += `<tr><td>${c.nrs[ti][pi]}</td><td class="n">${num(p.menge)}</td><td>${esc(p.einheit)}</td><td class="ds">${desc}${p.artnr ? `<div class="an">Art.-Nr. ${esc(p.artnr)}${p.mfr ? ' · ' + esc(p.mfr) : ''}</div>` : ''}</td><td class="n">${eur(p.ep)}</td><td class="n">${eur(gp)}</td></tr>`;
+    });
+    if (o.titel.filter(x => x.pos.length).length > 1) rows += `<tr class="ts"><td></td><td colspan="4">Summe Titel ${ti + 1} – ${esc(t.name)}</td><td class="n">${eur(c.titles[ti].sum)}</td></tr>`;
+  });
+  const multi = o.titel.filter(x => x.pos.length).length > 1;
+  const sum = `<div class="pv-sumw"><div><table class="pv-sum">
+   ${multi ? o.titel.map((t, ti) => t.pos.length ? `<tr class="sub"><td>Titel ${ti + 1} ${esc(t.name)}</td><td>${eur(c.titles[ti].sum)} €</td></tr>` : '').join('') : ''}
+   ${c.rab ? `<tr class="${multi ? 'line' : ''}"><td>Zwischensumme netto</td><td>${eur(c.netto0)} €</td></tr><tr><td>abzgl. Rabatt${o.rabattTyp === '%' ? ' ' + num(o.rabattWert) + ' %' : ''}</td><td>− ${eur(c.rab)} €</td></tr>` : ''}
+   <tr class="${multi || c.rab ? 'line' : ''}"><td><b>Summe netto</b></td><td><b>${eur(c.netto)} €</b></td></tr>
+   <tr><td>zzgl. MwSt. ${num(o.mwst)} %</td><td>${eur(c.mwst)} €</td></tr>
+   <tr class="tot"><td>Angebotssumme brutto</td><td>${eur(c.brutto)} €</td></tr></table>
+   ${s.lohnanteil && c.lohn ? `<div class="pv-lohn">Im Angebot enthaltener Lohnanteil (§35a EStG): ${eur(c.lohn)} € inkl. MwSt.</div>` : ''}</div></div>`;
+  const foot = footerCols();
+  return `<div class="sheet">
+   <div class="fold" style="top:90mm"></div><div class="fold" style="top:133.5mm;width:9mm"></div><div class="fold" style="top:195mm"></div>
+   <div class="pv-head"><div><div class="pv-fname">${esc(s.firma)}</div><div class="pv-fsub">${esc(s.zusatz)}</div><div class="pv-fline"></div></div><img class="pv-logo" src="${logoSrc()}" alt=""></div>
+   <div class="pv-ar"><div class="pv-addr"><div class="pv-ret"><span>${esc(ret)}</span></div><div class="pv-to">${esc(to)}</div></div>
+    <div class="pv-info"><table>
+     <tr><td>Angebots-Nr.</td><td><b>${esc(o.nr)}</b></td></tr>
+     <tr><td>Datum</td><td>${fmtDate(o.datum)}</td></tr>
+     <tr><td>Gültig bis</td><td>${fmtDate(addDays(o.datum, o.gueltig))}</td></tr>
+     ${kunde ? `<tr><td>Kunden-Nr.</td><td>${esc(kunde.id.slice(-6).toUpperCase())}</td></tr>` : ''}
+     ${s.inhaber ? `<tr><td>Ansprechpartner</td><td>${esc(s.inhaber)}</td></tr>` : ''}
+     ${s.tel ? `<tr><td>Telefon</td><td>${esc(s.tel)}</td></tr>` : ''}
+     ${s.email ? `<tr><td>E-Mail</td><td>${esc(s.email)}</td></tr>` : ''}
+    </table></div></div>
+   <div class="pv-h1">Angebot Nr. ${esc(o.nr)}</div>
+   ${o.betreff ? `<div class="pv-bv"><b>${esc(o.betreff)}</b></div>` : ''}
+   ${o.bauvorhaben ? `<div class="pv-bv"><b>Bauvorhaben:</b> ${esc(o.bauvorhaben).replace(/\n/g, ', ')}</div>` : ''}
+   <div class="pv-txt">${esc(fillPlaceholders(o.einleitung, o))}</div>
+   <table class="pv-tab"><thead><tr><th style="width:11mm">Pos.</th><th style="width:15mm" class="n">Menge</th><th style="width:12mm">Einh.</th><th>Bezeichnung</th><th style="width:21mm" class="n">EP €</th><th style="width:23mm" class="n">GP €</th></tr></thead><tbody>${rows || '<tr><td colspan="6">Keine Positionen</td></tr>'}</tbody></table>
+   ${sum}
+   ${(() => { const t = fillPlaceholders(o.schluss, o).replace(/\s+$/, ''), i = t.lastIndexOf('\n\n'); const a = i >= 0 ? t.slice(0, i) : '', b = i >= 0 ? t.slice(i + 2) : t;
+     return `${a ? `<div class="pv-txt" style="margin-top:6mm">${esc(a)}</div>` : ''}<div class="pv-end" style="margin-top:3mm">${esc(b)}<div class="pv-sign">${s.inhaber ? `${esc(s.inhaber)}<br>` : ''}${esc(s.firma)}</div></div>`; })()}
+   <div class="pv-foot">${foot.map(t => `<div>${esc(t)}</div>`).join('')}</div>
+  </div>`;
+}
+function setPageStyle() {
+  const f = footerCols();
+  $('#pageStyle').textContent = `@page{size:A4;margin:15mm 20mm 30mm 25mm;
+   @bottom-left{content:${cssStr(f[0] + '\n' + f[1])};white-space:pre;font:6.5pt/1.3 Arial,sans-serif;color:#444;vertical-align:top;padding-top:4mm;border-top:.2mm solid #999}
+   @bottom-center{content:${cssStr(f[2])};white-space:pre;font:6.5pt/1.3 Arial,sans-serif;color:#444;vertical-align:top;padding-top:4mm;border-top:.2mm solid #999}
+   @bottom-right{content:${cssStr(f[3] + '\n\n')} "Seite " counter(page) " von " counter(pages);white-space:pre;font:6.5pt/1.3 Arial,sans-serif;color:#444;vertical-align:top;text-align:right;padding-top:4mm;border-top:.2mm solid #999}}`;
+}
+let prevTitle = document.title;
+function openPreview(o) {
+  const pr = $('#print');
+  pr.innerHTML = `<div class="pv-bar"><button class="btn sm" data-pv="close">← Zurück</button><b style="flex:1">${esc(o.nr)}</b><button class="btn sm r" data-pv="print">📄 Als PDF speichern / Drucken</button></div>${buildSheet(o)}`;
+  pr.classList.add('preview'); setPageStyle();
+  const fit = () => { const sh = $('.sheet', pr); if (!sh) return; const w = 794; sh.style.zoom = Math.min(1, (window.innerWidth - 16) / w); };
+  fit(); window.addEventListener('resize', fit);
+  pr.onclick = e => {
+    const a = e.target.closest('[data-pv]')?.dataset.pv;
+    if (a === 'close') { pr.classList.remove('preview'); pr.innerHTML = ''; window.removeEventListener('resize', fit); }
+    if (a === 'print') { prevTitle = document.title; document.title = `Angebot ${o.nr}${o.adr.name ? ' - ' + o.adr.name : ''}`; window.print(); }
+  };
+}
+window.addEventListener('afterprint', () => { document.title = prevTitle; });
+
+/* =====================================================================
+   BEISPIELDATEN
+   ===================================================================== */
+const SAMPLE_DN_GC = /*SAMPLE_GC*/"V;261118;Beispiel-DATANORM GC Gienger - Testdaten, keine echten Preise;04;EUR;\nA;N;111.300.00.5;00;Geberit Duofix Element für Wand-WC;112 cm, mit Sigma UP-Spülkasten 12 cm;1;0;Stk;38900;GEB1;10;;\nB;N;111.300.00.5;GEBERIT;;;0;0;4025410000011;;10;;1;Geberit;;\nA;N;115.882.KH.1;00;Geberit Betätigungsplatte Sigma01;für 2-Mengen-Spülung, weiß-alpin;1;0;Stk;9850;GEB1;10;;\nB;N;115.882.KH.1;GEBERIT;;;0;0;4025410000028;;10;;1;Geberit;;\nA;N;109.791.00.1;00;Geberit Spülkasten AP128;Aufputz, 6/3 l, weiß;1;0;Stk;14200;GEB1;10;;\nB;N;109.791.00.1;GEBERIT;;;0;0;4025410000035;;10;;1;Geberit;;\nA;N;152.426.11.1;00;Geberit Ablaufgarnitur Waschtisch;Röhrensiphon d32, chrom;1;0;Stk;4680;GEB1;10;;\nB;N;152.426.11.1;GEBERIT;;;0;0;4025410000042;;10;;1;Geberit;;\nA;N;5660100;00;Villeroy & Boch Subway 2.0 Wand-WC;spülrandlos DirectFlush, weiß alpin;1;0;Stk;41200;VB01;11;;\nB;N;5660100;VILLEROY & BOCH;;;0;0;4051200000019;;11;;1;Villeroy & Boch;;\nA;N;9M68S101;00;Villeroy & Boch WC-Sitz Subway 2.0;mit Absenkautomatik, weiß;1;0;Stk;16800;VB01;11;;\nB;N;9M68S101;VILLEROY & BOCH;;;0;0;4051200000026;;11;;1;Villeroy & Boch;;\nA;N;7175A001;00;Villeroy & Boch Subway 2.0 Waschtisch;60 x 47 cm, mit Hahnloch, weiß;1;0;Stk;28600;VB01;11;;\nB;N;7175A001;VILLEROY & BOCH;;;0;0;4051200000033;;11;;1;Villeroy & Boch;;\nA;N;23324001;00;Grohe Eurosmart Einhand-Waschtischbatterie;S-Size, mit Ablaufgarnitur, chrom;1;0;Stk;12900;GRO1;12;;\nB;N;23324001;GROHE;;;0;0;4005170000014;;12;;1;Grohe;;\nA;N;27389002;00;Grohe Euphoria 260 Duschsystem;mit Thermostat, chrom;1;0;Stk;89900;GRO1;12;;\nB;N;27389002;GROHE;;;0;0;4005170000021;;12;;1;Grohe;;\nA;N;26425000;00;hansgrohe Crometta S 240 Showerpipe;mit Thermostat, chrom;1;0;Stk;61500;HG01;12;;\nB;N;26425000;HANSGROHE;;;0;0;4011090000017;;12;;1;Hansgrohe;;\nA;N;112400010001;00;Kaldewei Saniform Plus Badewanne;170 x 75 cm, Stahl-Email 3,5 mm, alpinweiß;1;0;Stk;28900;KAL1;13;;\nB;N;112400010001;KALDEWEI;;;0;0;4030170000018;;13;;1;Kaldewei;;\nA;N;136270;00;Viega Profipress Bogen 90°;Kupfer, 15 mm, SC-Contur;1;0;Stk;485;VIE1;20;;\nB;N;136270;VIEGA;;;0;0;4015210000016;;20;;1;Viega;;\nA;N;136294;00;Viega Profipress Bogen 90°;Kupfer, 22 mm, SC-Contur;1;0;Stk;790;VIE1;20;;\nB;N;136294;VIEGA;;;0;0;4015210000023;;20;;1;Viega;;\nA;N;102118;00;Viega Profipress T-Stück;Kupfer, 15 mm;1;0;Stk;640;VIE1;20;;\nB;N;102118;VIEGA;;;0;0;4015210000030;;20;;1;Viega;;\nA;N;KUPF15-50;00;Kupferrohr 15 x 1,0 mm;halbhart, Stange 5 m;1;0;m;1420;CU01;20;;\nB;N;KUPF15-50;WIELAND;;;0;0;4011200000015;;21;;1;Wieland;;\nA;N;10000134;00;Armaflex Rohrisolierung AF 15 mm;13 mm Dämmdicke, Länge 2 m;1;0;m;690;ISO1;20;;\nB;N;10000134;ARMACELL;;;0;0;4044740000012;;22;;1;Armacell;;\nA;N;0010021965;00;Vaillant ecoTEC plus VC 25CS/1-5;Gas-Brennwert-Heizgerät 25 kW, Erdgas E;1;0;Stk;412000;VAI1;30;;\nB;N;0010021965;VAILLANT;;;0;0;4024070000013;;30;;1;Vaillant;;\nA;N;7736701394;00;Buderus Logamax plus GB192-25i;Gas-Brennwertgerät 25 kW, weiß;1;0;Stk;465000;BUD1;30;;\nB;N;7736701394;BUDERUS;;;0;0;4057740000010;;30;;1;Buderus;;\nA;N;Z020224;00;Viessmann Vitodens 200-W 19 kW;Gas-Brennwert-Wandgerät;1;0;Stk;438000;VIS1;30;;\nB;N;Z020224;VIESSMANN;;;0;0;4048160000017;;30;;1;Viessmann;;\nA;N;FK0220610;00;Kermi Profil-K Flachheizkörper Typ 22;600 x 1000 mm, 1642 W, weiß;1;0;Stk;31200;KER1;31;;\nB;N;FK0220610;KERMI;;;0;0;4026340000016;;31;;1;Kermi;;\nA;N;013G6070;00;Danfoss Thermostatkopf RAW 5070;mit Flüssigkeitsfühler, weiß;1;0;Stk;2490;DAN1;31;;\nB;N;013G6070;DANFOSS;;;0;0;5702420000012;;32;;1;Danfoss;;\nA;N;2111-02.000;00;Heimeier Thermostat-Ventilunterteil V-exact II;DN 15, Eckform, voreinstellbar;1;0;Stk;3840;IMI1;31;;\nB;N;2111-02.000;IMI HEIMEIER;;;0;0;4024050000019;;32;;1;IMI Heimeier;;\nA;N;4215513;00;Wilo Hocheffizienzpumpe Stratos PICO 25/1-6;Baulänge 180 mm;1;0;Stk;28900;WIL1;30;;\nB;N;4215513;WILO;;;0;0;4048480000016;;33;;1;Wilo;;\nA;N;7213200;00;Reflex Ausdehnungsgefäß N 25;25 l, 4 bar, grau;1;0;Stk;6800;REF1;30;;\nB;N;7213200;REFLEX;;;0;0;4013290000013;;33;;1;Reflex;;\nA;N;FTXM35R;00;Daikin Perfera Wandgerät FTXM35R;Inneneinheit 3,5 kW, R32;1;0;Stk;118000;DAI1;40;;\nB;N;FTXM35R;DAIKIN;;;0;0;5410000000016;;40;;1;Daikin;;\nA;N;RXM35R;00;Daikin Außengerät RXM35R;Split-Außeneinheit 3,5 kW, R32;1;0;Stk;149000;DAI1;40;;\nB;N;RXM35R;DAIKIN;;;0;0;5410000000023;;40;;1;Daikin;;\nA;N;KM-1438;00;Kältemittelleitung isoliert 1/4\" + 3/8\";Doppelrohr, Kupfer, weiß;1;0;m;1850;KLI1;40;;\nB;N;KM-1438;KLIMAFLEX;;;0;0;4260000000014;;41;;1;Klimaflex;;\nA;N;16124;00;Sanitär-Silikon weiß 310 ml;Kartusche, fungizid;1;0;Stk;980;CHE1;10;;\nB;N;16124;OTTO-CHEMIE;;;0;0;4007220000016;;50;;1;Otto-Chemie;;\nP;A;136270;1;495;0;0;0;0;136294;1;825;0;0;0;0;\nV;261118;Rabattgruppen GC Gienger - Testdaten;04;EUR;\nR;N;GEB1;1;3800;Geberit;\nR;N;VB01;1;3500;Villeroy & Boch;\nR;N;GRO1;1;4000;Grohe;\nR;N;HG01;1;4000;Hansgrohe;\nR;N;KAL1;1;3200;Kaldewei;\nR;N;VIE1;1;5200;Viega Pressfittings;\nR;N;CU01;1;1800;Kupferrohr;\nR;N;ISO1;1;3000;Isolierung;\nR;N;VAI1;1;2800;Vaillant;\nR;N;BUD1;1;2800;Buderus;\nR;N;VIS1;1;2700;Viessmann;\nR;N;KER1;1;4500;Kermi;\nR;N;DAN1;1;3500;Danfoss;\nR;N;IMI1;1;3800;IMI Heimeier;\nR;N;WIL1;1;3300;Wilo;\nR;N;REF1;1;3000;Reflex;\nR;N;DAI1;1;2200;Daikin;\nR;N;KLI1;1;2500;Klimaleitungen;\nR;N;CHE1;1;2000;Chemie;";
+const SAMPLE_DN_WS = /*SAMPLE_WS*/"V;261118;Beispiel-DATANORM Weinmann & Schanz - Testdaten (Nettopreise);05;EUR;\nA;N;WS-100200;00;Geberit Duofix Element für Wand-WC;112 cm, Sigma UP-Spülkasten 12 cm;2;0;Stk;239,90;GEB;10;;\nB;N;WS-100200;GEBERIT;;;0;0;4025410000011;;10;;1;Geberit;;\nA;N;WS-100310;00;Geberit Betätigungsplatte Sigma20;2-Mengen, weiß/chrom matt;2;0;Stk;92,40;GEB;10;;\nB;N;WS-100310;GEBERIT;;;0;0;4025410000059;;10;;1;Geberit;;\nA;N;WS-200010;00;Mepla Mehrschichtverbundrohr 16 x 2,25;Rolle 50 m;2;0;m;2,15;GEB;20;;\nB;N;WS-200010;GEBERIT;;;0;0;4025410000066;;21;;1;Geberit;;\nA;N;WS-200120;00;Rohrschelle mit Gummieinlage 15 mm;M8/M10, verzinkt;2;0;Stk;0,98;BEF;20;;\nB;N;WS-200120;WALRAVEN;;;0;0;8712000000013;;23;;1;Walraven;;\nA;N;WS-300050;00;Eckventil 1/2\" x 3/8\";mit Schubrosette, chrom;2;0;Stk;7,60;ARM;12;;\nB;N;WS-300050;SCHELL;;;0;0;4021160000011;;12;;1;Schell;;\nA;N;WS-300060;00;Flexschlauch 3/8\" 300 mm;Edelstahlgeflecht;2;0;Stk;4,20;ARM;12;;\nB;N;WS-300060;SCHELL;;;0;0;4021160000028;;12;;1;Schell;;\nA;N;WS-400100;00;Duschwanne Mineralguss 90 x 90 cm;superflach, weiß;2;0;Stk;265,00;DUS;13;;\nB;N;WS-400100;KALDEWEI;;;0;0;4030170000025;;13;;1;Kaldewei;;\nA;N;WS-400110;00;Ablaufgarnitur Duschwanne D 90;flach, mit Geruchsverschluss;2;0;Stk;38,50;DUS;13;;\nB;N;WS-400110;VIEGA;;;0;0;4015210000047;;13;;1;Viega;;\nA;N;WS-500010;00;Heizungsfüllwasser-Patrone VE;vollentsalzt, 6 l;2;0;Stk;89,00;HZG;30;;\nB;N;WS-500010;GRÜNBECK;;;0;0;4000000000016;;34;;1;Grünbeck;;\nA;N;WS-500020;00;Kondensatpumpe Klimagerät;bis 10 l/h, 230 V;2;0;Stk;118,00;KLI;40;;\nB;N;WS-500020;ASPEN;;;0;0;5010000000017;;41;;1;Aspen;;";
+async function loadDemo() {
+  if (!await confirmDlg('Beispieldaten laden? Es werden 2 Beispiel-Lieferanten (DATANORM), 3 Kunden und 2 Angebote hinzugefügt. Vorhandene Daten bleiben erhalten.', 'Laden')) return;
+  const pr = progress('Beispieldaten…');
+  const st = [];
+  for (const [sup, txt] of [['GC Gienger (Beispiel)', SAMPLE_DN_GC], ['Weinmann & Schanz (Beispiel)', SAMPLE_DN_WS]]) {
+    const imp = new DNImporter(sup); txt.split(/\r?\n/).forEach(l => imp.line(l)); await imp.flush(true); st.push(imp.st);
+  }
+  rebuildArr(); pr.set(.5);
+  const s = S.settings;
+  if (!s.gruppen.length) s.gruppen = [{ code: '10', name: 'Sanitär-Installation', pct: 25 }, { code: '11', name: 'Sanitärkeramik', pct: 22 }, { code: '12', name: 'Armaturen', pct: 22 }, { code: '20', name: 'Rohre & Fittings', pct: 35 }, { code: '30', name: 'Wärmeerzeuger', pct: 15 }, { code: '31', name: 'Heizkörper', pct: 20 }, { code: '40', name: 'Klimatechnik', pct: 18 }];
+  rebuildGrpMap(); await DB.kvSet('settings', s);
+  const cs = [
+    { id: uid(), anrede: 'Herr', vorname: 'Thomas', nachname: 'Müller', strasse: 'Lindenstraße 12', plz: '44135', ort: 'Dortmund', tel: '0231 123456', email: 'thomas.mueller@example.de', notiz: 'Beispielkunde' },
+    { id: uid(), anrede: 'Frau', firma: 'Hausverwaltung Schneider GmbH', vorname: 'Petra', nachname: 'Schneider', strasse: 'Am Markt 3', plz: '45127', ort: 'Essen', tel: '0201 987654', email: 'info@hv-schneider.example', notiz: 'Beispielkunde' },
+    { id: uid(), anrede: 'Frau', vorname: 'Ayşe', nachname: 'Yılmaz', strasse: 'Rosenweg 7', plz: '44787', ort: 'Bochum', tel: '0234 555123', email: 'a.yilmaz@example.de', notiz: 'Beispielkunde' }];
+  for (const c of cs) { S.customers.push(c); } await DB.putMany('customers', cs);
+  const G = 'GC Gienger (Beispiel)|';
+  const M = id => S.mats.get(G + id);
+  const P = (id, q) => { const m = M(id); return m ? posFromMat(m, q) : null; };
+  const A = (text, h) => ({ id: uid(), typ: 'arb', text, menge: h, einheit: 'Std', ep: +s.stundensatz, ek: 0 });
+  const PS = (text, ep, ek = 0) => ({ id: uid(), typ: 'pausch', text, menge: 1, einheit: 'psch', ep, ek });
+  const TX = text => ({ id: uid(), typ: 'text', text });
+  const o1 = newOffer(cs[0]);
+  o1.bauvorhaben = 'Badsanierung EG, Lindenstraße 12, 44135 Dortmund'; o1.betreff = 'Komplettsanierung Badezimmer'; o1.status = 'gesendet'; o1.rabattWert = 3;
+  o1.titel = [
+    { id: uid(), name: 'Demontage', pos: [PS('Demontage der vorhandenen Sanitärobjekte (WC, Waschtisch, Badewanne) inkl. Abtransport und fachgerechter Entsorgung', 480, 120), A('Rückbau alter Rohrleitungen, Abdichten der Anschlüsse', 4)] },
+    { id: uid(), name: 'Bad', pos: [P('111.300.00.5', 1), P('115.882.KH.1', 1), P('5660100', 1), P('9M68S101', 1), P('7175A001', 1), P('23324001', 1), P('26425000', 1), P('136270', 12), P('KUPF15-50', 15), P('10000134', 15), P('16124', 3), A('Montage Vorwandelemente, Sanitärobjekte und Armaturen', 16), TX('Fliesenarbeiten, Trockenbau und Elektroarbeiten bauseits.')].filter(Boolean) }];
+  const o2 = newOffer(cs[1]);
+  o2.bauvorhaben = 'MFH Am Markt 3, 45127 Essen – Heizungszentrale Keller'; o2.betreff = 'Heizungsmodernisierung Gas-Brennwert'; o2.rabattTyp = '€'; o2.rabattWert = 250;
+  o2.titel = [
+    { id: uid(), name: 'Heizung', pos: [P('0010021965', 1), P('4215513', 1), P('7213200', 1), PS('Abgasanlage: Kunststoff-Abgassystem DN 80/125 inkl. Formteile und Montage', 1150, 690), A('Demontage Altkessel, Montage und Inbetriebnahme Brennwertgerät', 14), PS('Hydraulischer Abgleich nach Verfahren B inkl. Berechnung und Dokumentation', 690, 0)].filter(Boolean) },
+    { id: uid(), name: 'Heizkörper', pos: [P('FK0220610', 3), P('2111-02.000', 3), P('013G6070', 3), P('136294', 18), A('Heizkörpertausch inkl. Anschlussarbeiten', 6)].filter(Boolean) },
+    { id: uid(), name: 'Hinweise', pos: [TX('Förderfähigkeit nach BEG EM wird gerne geprüft. Der Schornsteinfeger-Abnahmetermin wird von uns koordiniert.')] }];
+  S.offers.push(o1, o2); await DB.putMany('offers', [o1, o2]); setCur(o2.id);
+  pr.close();
+  toast(`Beispieldaten geladen: ${S.arr.length} Artikel, 2 Angebote`);
+  go('#/angebote');
+}
+
+/* =====================================================================
+   START
+   ===================================================================== */
+async function init() {
+  try { await DB.open(); } catch (e) { view.innerHTML = `<div class="card empty"><b>Datenbank nicht verfügbar</b>${esc(e.message || e)}<br>Bitte Browser-Einstellungen prüfen (privater Modus?).</div>`; return; }
+  S.settings = { ...DEF, ...(await DB.kvGet('settings') || {}) };
+  S.favs = await DB.kvGet('favs') || []; S.recent = await DB.kvGet('recent') || []; S.cur = await DB.kvGet('cur') || null;
+  const iv = await DB.kvGet('intern'); S.intern = iv == null ? true : iv; document.body.classList.toggle('nointern', !S.intern);
+  rebuildGrpMap();
+  S.customers = await DB.all('customers'); S.offers = await DB.all('offers');
+  for (const r of await DB.all('rabatt')) S.rab.set(r.id, r);
+  for (const m of await DB.all('materials')) { m._s = sstr(m); S.mats.set(m.id, m); }
+  rebuildArr(); refreshHeader();
+  $('#curChip').onclick = () => { const o = curOffer(); if (o) go('#/angebot/' + o.id); };
+  window.addEventListener('hashchange', route); route();
+  navigator.storage?.persist?.().catch(() => { });
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => { });
+}
+init();
+</script>
+</body>
+</html>
